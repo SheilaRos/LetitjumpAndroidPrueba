@@ -23,6 +23,16 @@
         android:layout_marginRight="14dp"
         android:layout_marginEnd="14dp" />
 
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@android:drawable/ic_media_play"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/play"
+        android:visibility="visible"
+        android:background="@android:drawable/ic_media_play" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="150dp"
@@ -64,15 +74,5 @@
             android:background="@android:drawable/btn_star_big_off" />
 
     </LinearLayout>
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@android:drawable/ic_media_play"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/play"
-        android:visibility="visible"
-        android:background="@android:drawable/ic_media_play" />
 
 </RelativeLayout>
