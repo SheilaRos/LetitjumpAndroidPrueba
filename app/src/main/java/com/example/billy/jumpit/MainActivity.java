@@ -1,17 +1,7 @@
 package com.example.billy.jumpit;
 
-import android.animation.ValueAnimator;
-import android.app.ActivityManager;
-import android.app.Notification;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
-import android.provider.MediaStore;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,9 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.List;
-import java.util.Map;
 
 
 public class MainActivity extends Activity {

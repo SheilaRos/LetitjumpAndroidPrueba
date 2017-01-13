@@ -26,7 +26,6 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@android:drawable/ic_media_play"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/play"
@@ -52,7 +51,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_star_big_on"
             android:id="@+id/coin_image"
             android:layout_weight="1"
             android:background="@android:drawable/btn_star_big_on" />
@@ -68,7 +66,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_star_big_off"
             android:id="@+id/diamonds_image"
             android:layout_weight="1"
             android:background="@android:drawable/btn_star_big_off" />
@@ -78,7 +75,6 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_lock_silent_mode_off"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
