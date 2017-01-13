@@ -1,6 +1,9 @@
 package com.example.billy.jumpit;
 
 import android.animation.ValueAnimator;
+import android.app.ActivityManager;
+import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -18,10 +21,28 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends Activity {
     boolean musicaOn = true;
+// Metodos para crear musica que inicie con la app en primer plano y que pare en segundo plano
+    Audio audio = new Audio();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        audio.stopMusic();
+        audio.unload();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        audio.load(this);
+        audio.startMusic();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,17 +55,6 @@ public class MainActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);//int flag, int mask
 
         setContentView(R.layout.activity_main);
-
-// comandos para iniciar la musica con looping
-        final Audio audio = new Audio();
-        audio.load(this);
-        audio.startMusic();
-
-      /*  final MediaPlayer mediaPlayer;
-        mediaPlayer = MediaPlayer.create(this,R.raw.musicaprueba);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.setVolume(100,100);
-        mediaPlayer.start();*/
 
 //crear animacion slideout
         final Animation slideout;
@@ -99,14 +109,6 @@ public class MainActivity extends Activity {
                     audio.startMusic();
                     musicaOn=true;
                 }
-              /*  if (mediaPlayer.isPlaying()){
-                    mediaPlayer.setVolume(0,0);
-                    mediaPlayer.stop();
-                }
-                if (!mediaPlayer.isPlaying()){
-                    mediaPlayer.setVolume(100,100);
-                    mediaPlayer.start();
-                }*/
             }
         });
     }
