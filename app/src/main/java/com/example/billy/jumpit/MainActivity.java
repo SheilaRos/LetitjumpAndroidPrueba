@@ -2,11 +2,7 @@ package com.example.billy.jumpit;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.os.Handler;
-import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -33,6 +29,7 @@ public class MainActivity extends Activity {
         audio.load(this);
         audio.startMusic();
     }
+    // comandos para poner la pantalla completa y que sea automatico
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -50,13 +47,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-// comando para que sea en pantalla completa
-    /*    this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);//int flag, int mask
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-*/
         setContentView(R.layout.activity_main);
 
 //crear animacion slideout
