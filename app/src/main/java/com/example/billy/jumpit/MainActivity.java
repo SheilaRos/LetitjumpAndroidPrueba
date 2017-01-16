@@ -99,9 +99,11 @@ public class MainActivity extends Activity {
                 if (musicaOn==true){
                     audio.stopMusic();
                     musicaOn=false;
+                    volume.setBackgroundResource(R.drawable.audiooff);
                 }else {
                     audio.startMusic();
                     musicaOn=true;
+                    volume.setBackgroundResource(R.drawable.audioon);
                 }
             }
         });
