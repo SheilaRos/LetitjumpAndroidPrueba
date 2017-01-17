@@ -8,21 +8,6 @@
     tools:context="com.example.billy.jumpit.MainActivity"
     android:background="@android:color/holo_green_light">
 
-    <TextView
-        android:text="Jump It!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Title"
-        android:textStyle="normal|bold"
-        android:textSize="36sp"
-        android:fontFamily="casual"
-        android:layout_marginBottom="15dp"
-        android:layout_above="@+id/play"
-        android:layout_toLeftOf="@+id/play"
-        android:layout_toStartOf="@+id/play"
-        android:layout_marginRight="14dp"
-        android:layout_marginEnd="14dp" />
-
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -82,5 +67,37 @@
         android:layout_marginLeft="10dp"
         android:id="@+id/volumeButton"
         android:background="@drawable/audioon" />
+
+    <TextView
+        android:text="Let it Jump!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Title"
+        android:textStyle="normal|bold"
+        android:textSize="36sp"
+        android:fontFamily="casual"
+        android:layout_marginBottom="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_above="@+id/play"
+        android:layout_toLeftOf="@+id/play"
+        android:layout_toStartOf="@+id/play" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/play"
+        android:layout_toRightOf="@+id/play"
+        android:layout_toEndOf="@+id/play"
+        android:id="@+id/optionsButton"
+        android:background="@drawable/opciones" />
+
+    <view
+        android:layout_width="500dp"
+        android:layout_height="250dp"
+        class="com.example.billy.jumpit.Options"
+        android:id="@+id/view2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

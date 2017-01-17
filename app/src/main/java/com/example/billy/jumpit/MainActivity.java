@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
     boolean musicaOn = true;
+    private View vistaOpciones;
 // Metodos para crear musica que inicie con la app en primer plano y que pare en segundo plano
     Audio audio = new Audio();
     @Override
@@ -58,14 +59,25 @@ public class MainActivity extends Activity {
         fadeout = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
         fadeout.setDuration(500);
 
+//crear animacion fadein
+        final Animation fadein;
+        fadein = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+        fadein.setDuration(500);
+
 //crear variables del menu
         final ImageButton play = (ImageButton)findViewById(R.id.play);
         final ImageButton volume = (ImageButton)findViewById(R.id.volumeButton);
+        final ImageButton options = (ImageButton)findViewById(R.id.optionsButton);
+        ImageButton close = (ImageButton)findViewById(R.id.closeButton);
         final TextView title = (TextView)findViewById(R.id.Title);
         final TextView coins = (TextView)findViewById(R.id.coins);
         final TextView diamonds = (TextView)findViewById(R.id.diamonds);
         final ImageView coins_image = (ImageView)findViewById(R.id.coin_image);
         final ImageView diamonds_image = (ImageView)findViewById(R.id.diamonds_image);
+        vistaOpciones = (View)findViewById(R.id.options);
+
+//hacer invisible las views
+        vistaOpciones.setVisibility(View.INVISIBLE);
 
 //crear listener del play
         play.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +99,8 @@ public class MainActivity extends Activity {
                 diamonds_image.setVisibility(View.INVISIBLE);
                 volume.startAnimation(fadeout);
                 volume.setVisibility(View.INVISIBLE);
+                options.startAnimation(fadeout);
+                options.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -103,6 +117,24 @@ public class MainActivity extends Activity {
                     musicaOn=true;
                     volume.setBackgroundResource(R.drawable.audioon);
                 }
+            }
+        });
+
+//crear listener de las opciones
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vistaOpciones.setAnimation(fadein);
+                vistaOpciones.setVisibility(View.VISIBLE);
+            }
+        });
+
+//crear listener para cerrar las opciones
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vistaOpciones.setAnimation(fadeout);
+                vistaOpciones.setVisibility(View.INVISIBLE);
             }
         });
     }
