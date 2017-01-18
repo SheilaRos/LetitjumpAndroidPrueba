@@ -57,17 +57,6 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/volumeButton"
-        android:background="@drawable/audioon" />
-
     <TextView
         android:text="Let it Jump!"
         android:layout_width="wrap_content"

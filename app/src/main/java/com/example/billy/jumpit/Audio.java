@@ -19,7 +19,6 @@ public class Audio{
         activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         mediaPlayer = MediaPlayer.create(activity, R.raw.musicaprueba);
         mediaPlayer.setLooping(true);
-        mediaPlayer.setVolume(0.25f, 0.25f);
     }
     public void startMusic() {
         mediaPlayer.start();
@@ -30,6 +29,9 @@ public class Audio{
 
     public void unload() {
         mediaPlayer.release();
+    }
+    public void setVolume(float a, float b){
+        mediaPlayer.setVolume(a, b);
     }
 
 }

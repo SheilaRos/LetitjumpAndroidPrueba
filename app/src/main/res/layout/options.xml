@@ -11,4 +11,31 @@
         android:layout_height="60dp"
         android:id="@+id/closeButton"
         android:background="@android:drawable/btn_dialog" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/volumeButton"
+            android:background="@drawable/audioon" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/volumeBar"
+            android:layout_weight="14.63"
+            android:progress="50"
+            android:max="100" />
+
+    </LinearLayout>
+
 </LinearLayout>

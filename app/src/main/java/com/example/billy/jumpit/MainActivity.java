@@ -7,13 +7,34 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
     boolean musicaOn = true;
     private View vistaOpciones;
+    private SeekBar volumeControl;
+    private ImageButton volume;
+
+// barra de control del volumen
+    @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        final float volumen = (float) (1 - (Math.log(100 - volumeControl.getProgress()) / Math.log(100)));
+        audio.setVolume(volumen, volumen);
+        if (volumeControl.getProgress()==0){
+            audio.stopMusic();
+            musicaOn=false;
+            volume.setBackgroundResource(R.drawable.audiooff);
+        }else {
+            audio.startMusic();
+            musicaOn=true;
+            volume.setBackgroundResource(R.drawable.audioon);
+        }
+    }
+    @Override public void onStartTrackingTouch(SeekBar seekBar) { }
+    @Override public void onStopTrackingTouch(SeekBar seekBar) { }
+
 // Metodos para crear musica que inicie con la app en primer plano y que pare en segundo plano
     Audio audio = new Audio();
     @Override
@@ -52,21 +73,21 @@ public class MainActivity extends Activity {
 //crear animacion slideout
         final Animation slideout;
         slideout = AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right);
-        slideout.setDuration(500);
+        slideout.setDuration(200);
 
 //crear animacion fadeout
         final Animation fadeout;
         fadeout = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
-        fadeout.setDuration(500);
+        fadeout.setDuration(200);
 
 //crear animacion fadein
         final Animation fadein;
         fadein = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
-        fadein.setDuration(500);
+        fadein.setDuration(200);
 
 //crear variables del menu
         final ImageButton play = (ImageButton)findViewById(R.id.play);
-        final ImageButton volume = (ImageButton)findViewById(R.id.volumeButton);
+        volume = (ImageButton)findViewById(R.id.volumeButton);
         final ImageButton options = (ImageButton)findViewById(R.id.optionsButton);
         ImageButton close = (ImageButton)findViewById(R.id.closeButton);
         final TextView title = (TextView)findViewById(R.id.Title);
@@ -75,6 +96,11 @@ public class MainActivity extends Activity {
         final ImageView coins_image = (ImageView)findViewById(R.id.coin_image);
         final ImageView diamonds_image = (ImageView)findViewById(R.id.diamonds_image);
         vistaOpciones = (View)findViewById(R.id.options);
+        volumeControl = (SeekBar)findViewById(R.id.volumeBar);
+
+//listener de la barra de control del volumen
+        volumeControl.setOnSeekBarChangeListener(this);
+
 
 //hacer invisible las views
         vistaOpciones.setVisibility(View.INVISIBLE);
@@ -104,6 +130,7 @@ public class MainActivity extends Activity {
             }
         });
 
+
 //crear listener del volume para mute o play again
         volume.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,10 +139,12 @@ public class MainActivity extends Activity {
                     audio.stopMusic();
                     musicaOn=false;
                     volume.setBackgroundResource(R.drawable.audiooff);
+                    volumeControl.setProgress(0);
                 }else {
                     audio.startMusic();
                     musicaOn=true;
                     volume.setBackgroundResource(R.drawable.audioon);
+                    volumeControl.setProgress(50);
                 }
             }
         });
@@ -124,7 +153,7 @@ public class MainActivity extends Activity {
         options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vistaOpciones.setAnimation(fadein);
+                vistaOpciones.startAnimation(fadein);
                 vistaOpciones.setVisibility(View.VISIBLE);
             }
         });
@@ -133,7 +162,7 @@ public class MainActivity extends Activity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vistaOpciones.setAnimation(fadeout);
+                vistaOpciones.startAnimation(fadeout);
                 vistaOpciones.setVisibility(View.INVISIBLE);
             }
         });
