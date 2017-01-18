@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Jumpit</string>
+    <string name="app_name" translatable="false">Let it Jump</string>
+    <string name="language">Language</string>
 </resources>
