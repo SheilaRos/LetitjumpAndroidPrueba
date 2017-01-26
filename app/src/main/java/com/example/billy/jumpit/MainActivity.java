@@ -17,6 +17,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     private View vistaOpciones;
     private SeekBar volumeControl;
     private ImageButton volume;
+    private Mapa mapa;
+    PlataformasGame game;
+    GameView view;
 
 // barra de control del volumen
     @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -127,6 +130,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 volume.setVisibility(View.INVISIBLE);
                 options.startAnimation(fadeout);
                 options.setVisibility(View.INVISIBLE);
+                setContentView(R.layout.mapa);
             }
         });
 

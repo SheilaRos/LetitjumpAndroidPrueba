@@ -12,7 +12,7 @@ public class TilePrueba {
     private Bitmap[] bitmap;
     public Bitmap getBitmap(int i) { return bitmap[i]; }
     private int[][] sheetInfo = {
-            /*
+
             { 0, 66, 24, 32, 0 },	//  0: Bonk walking right 1
             { 32, 66, 24, 32, 0 },	//  1: Bonk walking right 2
             { 63, 66, 24, 32, 0 },	//  2: Bonk walking right 3
@@ -67,7 +67,7 @@ public class TilePrueba {
             { 71, 212, 28, 32, 0 },	// 49: Bonk dying 3
             { 107, 212, 28, 32, 0 },	// 50: Bonk dying 4
             { 140, 212, 28, 32, 0 },	// 51: Bonk dying 5
-            */
+
             {}
     };
     public TilePrueba(Resources res) {
