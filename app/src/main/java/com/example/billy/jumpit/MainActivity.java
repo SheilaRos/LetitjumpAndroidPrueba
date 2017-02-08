@@ -1,5 +1,7 @@
 package com.example.billy.jumpit;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
@@ -17,9 +19,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     private View vistaOpciones;
     private SeekBar volumeControl;
     private ImageButton volume;
-    private Mapa mapa;
     PlataformasGame game;
-    GameView view;
+    GameView vista;
 
 // barra de control del volumen
     @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -54,6 +55,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         audio.startMusic();
     }
     // comandos para poner la pantalla completa y que sea automatico
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -108,6 +110,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 //hacer invisible las views
         vistaOpciones.setVisibility(View.INVISIBLE);
 
+        game = new PlataformasGame(this);
+        vista = new GameView(this, game);
 //crear listener del play
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +134,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 volume.setVisibility(View.INVISIBLE);
                 options.startAnimation(fadeout);
                 options.setVisibility(View.INVISIBLE);
-                setContentView(R.layout.mapa);
+
+
+                setContentView(vista);
             }
         });
 
@@ -171,5 +177,6 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
             }
         });
     }
+
 }
 
