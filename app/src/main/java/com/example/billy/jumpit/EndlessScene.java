@@ -26,6 +26,7 @@ public class EndlessScene {
                 }
             }
         }
+
         // avanzamos el mapa una posicion
         for (int i = 0; i<16;i++){
             for (int j = 0; j<80;j++){
@@ -33,15 +34,18 @@ public class EndlessScene {
                     mapa[i][j-1] = mapa [i][j];
             }
         }
+
         // pintamos la ultima linea
         for (int i = 0; i<16;i++){
-            if (i == 16 && groundCounter<5)
+            if (i == 16 && groundCounter<5) {
                 mapa[i][80] = "_";
-
-            mapa[i][80] = ".";
+            }else {
+                mapa[i][80] = ".";
+            }
         }
         return mapa;
     }
+
     public void initiateMap(){
         for (int i = 0; i<16;i++){
             for (int j = 0; j<80;j++){
