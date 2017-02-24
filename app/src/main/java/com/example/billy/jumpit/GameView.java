@@ -10,9 +10,6 @@ import android.view.SurfaceView;
 
 import java.util.concurrent.LinkedBlockingDeque;
 
-/**
- * Created by dam on 25/1/17.
- */
 @SuppressLint("ViewConstructor")
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
