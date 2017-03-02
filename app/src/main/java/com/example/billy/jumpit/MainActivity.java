@@ -19,8 +19,6 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     private View vistaOpciones;
     private SeekBar volumeControl;
     private ImageButton volume;
-    PlataformasGame game;
-    GameView vista;
 
 // barra de control del volumen
     @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -110,8 +108,6 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 //hacer invisible las views
         vistaOpciones.setVisibility(View.INVISIBLE);
 
-        game = new PlataformasGame(this);
-        vista = new GameView(this, game);
 //crear listener del play
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +131,6 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 options.startAnimation(fadeout);
                 options.setVisibility(View.INVISIBLE);
 
-
-                setContentView(vista);
             }
         });
 

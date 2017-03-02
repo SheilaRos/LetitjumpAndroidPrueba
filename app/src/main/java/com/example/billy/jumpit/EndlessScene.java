@@ -1,5 +1,9 @@
 package com.example.billy.jumpit;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+
 import java.util.ArrayList;
 
 /**
@@ -7,52 +11,73 @@ import java.util.ArrayList;
  */
 
 public class EndlessScene {
-    private String [][] mapa = new String[16][80];
+    private char scene[][] = new char[16][80];
+    private Paint paint;
+    private BitmapSet bitmapSet;
+    private int cont = 0;
 
-    public String[][] updateMap(){
+    public EndlessScene(BitmapSet bitmapSet) {
+        this.bitmapSet = bitmapSet;
+        this.scene = initiateMap(scene);
+        paint = new Paint();
+    }
+
+    public void draw(Canvas canvas) {
+        scene = updateMap();
+        for(int y = 0; y < 16; y++) {
+            for(int x = 0; x < 80; x++) {
+                Bitmap bitmap;
+                switch(scene[y][x]) {
+                    case '.': bitmap = bitmapSet.getBitmap(23); break;
+                    case '-': bitmap = bitmapSet.getBitmap(45); break;
+                    default: bitmap = bitmapSet.getBitmap(23); break;
+                }
+                canvas.drawBitmap(bitmap, x*16, y*16, paint);
+            }
+        }
+    }
+    public char[][] updateMap(){
         int platforms = 0;
         int groundCounter = 0;
 
         // buscamos info
         for (int i = 0; i<16;i++){
-            for (int j = 0; j<80;j++){
+            for (int j = 0; j<79;j++){
                 // contamos las plataformas
-                if (mapa[i][j].equals("-"/* plataforma */) && mapa[i][j+1].equals("." /* cielo */)){
+                if (scene[i][j]==('-'/* plataforma */) && scene[i][j+1]==('.' /* cielo */)){
                     platforms++;
                 }
                 // contamos el suelo
-                if (i == 16 && mapa[16][j].equals("_")){
+                if (i == 15 && scene[15][j]=='-'){
                     groundCounter++;
                 }
             }
         }
 
-        // avanzamos el mapa una posicion
+        // avanzamos el scene una posicion
         for (int i = 0; i<16;i++){
-            for (int j = 0; j<80;j++){
-                if (j>1)
-                    mapa[i][j-1] = mapa [i][j];
+            for (int j = 0; j<79;j++){
+                    scene[i][j] = scene [i][j+1];
             }
         }
-
         // pintamos la ultima linea
         for (int i = 0; i<16;i++){
-            if (i == 16 && groundCounter<5) {
-                mapa[i][80] = "_";
-            }else {
-                mapa[i][80] = ".";
-            }
+
+                scene[i][79] = '.';
+            if (i==15 && groundCounter<10)
+                scene[i][79] = '-';
         }
-        return mapa;
+        return scene;
     }
 
-    public void initiateMap(){
+    public char [][] initiateMap(char [][] map){
         for (int i = 0; i<16;i++){
             for (int j = 0; j<80;j++){
-                if (i<15)mapa[i][j] = ".";
-                else mapa [i][j] = "_";
+                map[i][j] = '.';
+                map [15][j] = '-';
             }
         }
+        return map;
     }
 }
 /*

@@ -1,92 +1,34 @@
 package com.example.billy.jumpit;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-
-import java.util.concurrent.LinkedBlockingDeque;
+import android.util.AttributeSet;
+import android.view.View;
 
 /**
- * Created by dam on 25/1/17.
+ * Created by dam on 2/3/17.
  */
-@SuppressLint("ViewConstructor")
-class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
-    private Handler handler;
-    private Game game;
-    private LinkedBlockingDeque<MotionEvent> eventQueue;
-    private boolean running;
+public class GameView extends View {
+    private BitmapSet bitmapSet;
+    private EndlessScene endlessScene;
+    private Bonk bonk;
 
-    public GameView(Context context, Game game) {
-        super(context);
-        eventQueue = new LinkedBlockingDeque<MotionEvent>();
-        this.game = game;
-        getHolder().addCallback(this);
-        setFocusable(true);
+    public GameView(Context context) { this(context, null, 0); }
+    public GameView(Context context, AttributeSet attrs) { this(context, attrs, 0); }
+    public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        bitmapSet = new BitmapSet(this.getResources());
+        endlessScene = new EndlessScene(bitmapSet);
+        bonk = new Bonk(bitmapSet);
     }
 
-    @SuppressLint("Recycle")
-    public void enqueueEvent(MotionEvent event) {
-        try { eventQueue.putFirst(MotionEvent.obtain(event)); }
-        catch (InterruptedException e) { }
-    }
-
-    @Override public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        game.width = width;
-        game.height = height;
-        handler = new Handler();
-        if (!running) {
-            game.startTime = game.startPeriod = game.time = System.currentTimeMillis();
-            game.start();
-            running = true;
-            game.mustRender = true;
-            handler.post(runnable);
-        }
-    }
-
-    private Runnable runnable = new Runnable() {
-        @Override public void run() {
-            int desired = game.getDesiredDeltaTime();
-            game.time = System.currentTimeMillis();
-            long delta = game.time - game.lastTime;
-            game.lastTime = game.time;
-
-            if (running) {
-                handler.removeCallbacks(this);
-                handler.postDelayed(this, desired);
-
-                // attend user interaction
-                while (!eventQueue.isEmpty()) {
-                    MotionEvent event = eventQueue.removeLast();
-                    game.attend(event);
-                }
-
-                game.update(delta);
-
-                if (game.mustRender) {
-                    Canvas canvas = getHolder().lockCanvas();
-                    if (canvas != null) {
-                        game.render(canvas);
-                        game.mustRender = false;
-                        getHolder().unlockCanvasAndPost(canvas);
-                    }
-                }
-            }
-            else {
-                game.finish();
-            }
-        }
-    };
-
-    @Override public void surfaceCreated(SurfaceHolder holder) { }
-    @Override public void surfaceDestroyed(SurfaceHolder holder) { running = false; }
-
-    @Override public boolean onTouchEvent(MotionEvent event) {
-        enqueueEvent(event);
-        return true;
+    @Override public void onDraw(Canvas canvas) {
+        this.postInvalidateDelayed(50);
+        if (bitmapSet == null) return;
+        float sc = getHeight() / (16*16f);
+        canvas.scale(sc, sc);
+        endlessScene.draw(canvas);
+        bonk.draw(canvas);
     }
 }

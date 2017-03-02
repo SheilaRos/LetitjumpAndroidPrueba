@@ -8,6 +8,12 @@
     tools:context="com.example.billy.jumpit.MainActivity"
     android:background="@android:color/holo_green_light">
 
+    <view
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="com.example.billy.jumpit.GameView"
+        android:id="@+id/view" />
+
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
