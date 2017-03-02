@@ -81,11 +81,12 @@ public class EndlessScene {
     }
 }
 /*
-ver que plataformas hay hechas
-maximo de plataformas??
-velocidad??
-random progresivo de longitud de plataforma long: 2-90% 3-70% 4-50% 5-20%
-distancia entre plataformas
-altura distinta, diferencia de 2?? determinado por random
-
+- ver que plataformas hay hechas
+- maximo de plataformas??
+- velocidad??
+- random progresivo de longitud de plataforma long: 2-90% 3-70% 4-50% 5-20%
+- distancia entre plataformas
+- altura distinta, diferencia de 2?? determinado por random
+- enemigos
+- power ups
 */
