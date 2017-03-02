@@ -53,7 +53,7 @@ public class EndlessScene {
                 }
             }
         }
-
+ //
         // avanzamos el scene una posicion
         for (int i = 0; i<16;i++){
             for (int j = 0; j<79;j++){
