@@ -5,6 +5,8 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.Timer;
+
 /**
  * Created by dam on 2/3/17.
  */
@@ -24,7 +26,7 @@ public class GameView extends View {
     }
 
     @Override public void onDraw(Canvas canvas) {
-        this.postInvalidateDelayed(50);
+        this.postInvalidateDelayed(1);
         if (bitmapSet == null) return;
         float sc = getHeight() / (16*16f);
         canvas.scale(sc, sc);

@@ -23,7 +23,7 @@ public class EndlessScene {
     }
 
     public void draw(Canvas canvas) {
-            scene = updateMap();
+        scene = updateMap();
         for(int y = 0; y < 16; y++) {
             for(int x = 0; x < 30; x++) {
                 Bitmap bitmap;
@@ -33,7 +33,6 @@ public class EndlessScene {
                     default: bitmap = bitmapSet.getBitmap(23); break;
                 }
                 canvas.drawBitmap(bitmap, x*16-cont, y*16, paint);
-                //canvas.drawBitmap(sprite, x, y, paint);
             }
         }
     }
