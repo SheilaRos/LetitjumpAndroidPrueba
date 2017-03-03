@@ -88,13 +88,13 @@
         android:background="@drawable/opciones" />
 
     <view
+        android:id="@+id/view2"
+        class="com.example.billy.jumpit.Options"
         android:layout_width="500dp"
         android:layout_height="250dp"
-        class="com.example.billy.jumpit.Options"
-        android:id="@+id/view2"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:alpha="0" />
+        android:layout_centerVertical="true"
+        android:alpha="1" />
 
 
 </RelativeLayout>

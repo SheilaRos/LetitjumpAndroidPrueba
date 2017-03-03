@@ -9,7 +9,7 @@ public class Bonk {
 
 	private int frame;
 	private Paint paint;
-	private int x, y, vx, vy;
+	private int x, y;
 	private BitmapSet bitmapSet;
 
 	public Bonk(BitmapSet bitmapSet) {
@@ -21,10 +21,6 @@ public class Bonk {
 	}
 
 	public void draw(Canvas canvas) {
-		vy++; if (vy > 2) vy = 2;
-		x += vx;
-		if (y<208)
-		y += vy;
 		Bitmap sprite = bitmapSet.getBitmap(frame);
 		frame++;
 		if (frame == 4) frame = 0;
