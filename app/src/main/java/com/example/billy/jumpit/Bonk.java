@@ -12,6 +12,30 @@ public class Bonk {
 	private int x, y;
 	private BitmapSet bitmapSet;
 
+	public int getFrame() {
+		return frame;
+	}
+
+	public void setFrame(int frame) {
+		this.frame = frame;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
 	public Bonk(BitmapSet bitmapSet) {
 		this.bitmapSet = bitmapSet;
 		frame = 0;

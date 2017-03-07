@@ -2,10 +2,14 @@ package com.example.billy.jumpit;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.os.Handler;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.Random;
 import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by dam on 2/3/17.
@@ -34,5 +38,48 @@ public class GameView extends View {
             endlessScene.draw(canvas);
         }
         bonk.draw(canvas);
+    }
+    boolean goingUp = true;
+    int jumpLength = 0;
+    Timer timer = null;
+    TimerTask timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            if (jumpLength<50 && goingUp) {
+                bonk.setY(bonk.getY() - 1);
+                jumpLength++;
+            }
+            if (jumpLength == 50)
+                goingUp = false;
+
+            if (jumpLength>0 && !goingUp){
+                bonk.setY(bonk.getY() + 1);
+                jumpLength--;
+            }
+            if (jumpLength == 0 && !goingUp) {
+                stop();
+                goingUp = true;
+            }
+        }
+    };
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        event.getRawX();
+        event.getRawY();
+            start();
+        return true;
+    }
+
+    public void start() {
+        if(timer != null) {
+            return;
+        }
+        timer = new Timer();
+        timer.schedule(timerTask, 0, 20);
+    }
+
+    public void stop() {
+        timer.cancel();
+        timer = null;
     }
 }

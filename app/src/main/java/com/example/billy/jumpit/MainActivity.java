@@ -2,8 +2,10 @@ package com.example.billy.jumpit;
 
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -67,6 +69,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,6 +174,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 vistaOpciones.setVisibility(View.INVISIBLE);
             }
         });
+
     }
 
 }
