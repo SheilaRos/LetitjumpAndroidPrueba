@@ -42,7 +42,7 @@ public class GameView extends View {
     }
     boolean goingUp = true;
     int jumpLength = 0;
-    int count = 0;
+    int count = 0;//
     class MyTimerTask extends TimerTask
     {
         public void run()
