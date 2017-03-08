@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="172dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.63">
+
+            <ImageButton
+                android:id="@+id/skinBtnShop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="?attr/actionModeBackground" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="192dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.25">
+
+            <ImageButton
+                android:id="@+id/powerupBtnShop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="?attr/actionModeBackground" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="178dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.76"
+                app:srcCompat="?attr/actionModeBackground" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                app:srcCompat="?attr/actionModeBackground"
+                android:layout_weight="0.22" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
