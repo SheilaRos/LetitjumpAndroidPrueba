@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -41,32 +42,54 @@ public class GameView extends View {
     }
     boolean goingUp = true;
     int jumpLength = 0;
-    Timer timer = null;
-    TimerTask timerTask = new TimerTask() {
-        @Override
-        public void run() {
+    int count = 0;
+    class MyTimerTask extends TimerTask
+    {
+        public void run()
+        {
             if (jumpLength<50 && goingUp) {
-                bonk.setY(bonk.getY() - 1);
-                jumpLength++;
+                if (jumpLength>45){
+                    count++;
+                    if (count>2) {
+                        bonk.setY(bonk.getY() - 1);
+                        jumpLength++;
+                        count = 0;
+                    }
+                }else {
+                    bonk.setY(bonk.getY() - 1);
+                    jumpLength++;
+                }
             }
             if (jumpLength == 50)
                 goingUp = false;
 
             if (jumpLength>0 && !goingUp){
-                bonk.setY(bonk.getY() + 1);
-                jumpLength--;
+                count++;
+                if (jumpLength>45){
+                    count++;
+                    if (count>2) {
+                        bonk.setY(bonk.getY() + 1);
+                        jumpLength--;
+                        count = 0;
+                    }
+                }else {
+                    bonk.setY(bonk.getY() + 1);
+                    jumpLength--;
+                }
             }
             if (jumpLength == 0 && !goingUp) {
-                stop();
                 goingUp = true;
+                stop();
             }
         }
-    };
+    }
+    Timer timer = null;
+    MyTimerTask myTimerTask = new MyTimerTask();
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         event.getRawX();
         event.getRawY();
-            start();
+        start();
         return true;
     }
 
@@ -74,12 +97,15 @@ public class GameView extends View {
         if(timer != null) {
             return;
         }
-        timer = new Timer();
-        timer.schedule(timerTask, 0, 20);
+            timer = new Timer();
+            myTimerTask = new MyTimerTask();
+            timer.schedule(myTimerTask, 0, bonk.getJumpVel());
+
     }
 
     public void stop() {
         timer.cancel();
+        timer.purge();
         timer = null;
     }
 }

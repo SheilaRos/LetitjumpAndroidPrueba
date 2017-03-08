@@ -10,6 +10,7 @@ public class Bonk {
 	private int frame;
 	private Paint paint;
 	private int x, y;
+	private int jumpVel;
 	private BitmapSet bitmapSet;
 
 	public int getFrame() {
@@ -36,12 +37,21 @@ public class Bonk {
 		this.y = y;
 	}
 
+	public int getJumpVel() {
+		return jumpVel;
+	}
+
+	public void setJumpVel(int jumpVel) {
+		this.jumpVel = jumpVel;
+	}
+
 	public Bonk(BitmapSet bitmapSet) {
 		this.bitmapSet = bitmapSet;
 		frame = 0;
 		paint = new Paint();
 		x = 80;
 		y = 208;
+		jumpVel = 11;
 	}
 
 	public void draw(Canvas canvas) {
