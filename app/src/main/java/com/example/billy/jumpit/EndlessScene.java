@@ -21,7 +21,13 @@ public class EndlessScene {
         this.scene = initiateMap(scene);
         paint = new Paint();
     }
-
+    public boolean isGround(int y, int x){
+        char s = scene[y][x];
+        if (s == '-') return true;
+        if (s == '<') return true;
+        if (s == '>') return true;
+        return false;
+    }
     public void draw(Canvas canvas) {
         scene = updateMap();
         for(int y = 0; y < 16; y++) {
@@ -67,6 +73,7 @@ public class EndlessScene {
             for (int i = 0; i < 16; i++) {
 
                 scene[i][29] = '.';
+                scene[13][29] = '-';
                 if (i == 15 /*&& groundCounter<10*/)
                     scene[i][29] = '-';
             }
