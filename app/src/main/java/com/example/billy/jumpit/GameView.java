@@ -38,11 +38,11 @@ public class GameView extends View {
 // dibujar la pantalla
     @Override
     public void onDraw(Canvas canvas) {
-        this.postInvalidateDelayed(20);
+        this.postInvalidateDelayed(35);
         if (bitmapSet == null) return;
         float sc = getHeight() / (16 * 16f);
         canvas.scale(sc, sc);
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 10; i++) {
             endlessScene.draw(canvas);
         }
         bonk.draw(canvas);
