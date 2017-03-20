@@ -5,16 +5,16 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 /**
- * Created by dam on 10/2/17.
+ * Created by dam on 20/3/17.
  */
 
-public class EndlessScene {
+public class MainMenuBackgroundScene {
     private char scene[][] = new char[16][30];
     private Paint paint;
     private BitmapSet bitmapSet;
     private int cont = 0;
 
-    public EndlessScene(BitmapSet bitmapSet) {
+    public MainMenuBackgroundScene(BitmapSet bitmapSet) {
         this.bitmapSet = bitmapSet;
         this.scene = initiateMap(scene);
         paint = new Paint();
@@ -28,7 +28,7 @@ public class EndlessScene {
         if (s == '>') return true;
         return false;
     }
-    public void draw(Canvas canvas, int vel) {
+    public void draw(Canvas canvas) {
         if (cont>15) {
             scene = updateMap();
             cont = 0;
@@ -44,39 +44,39 @@ public class EndlessScene {
                 canvas.drawBitmap(bitmap, x*16-cont, y*16, paint);
             }
         }
-        cont = cont+vel;
+        cont = cont+3;
     }
     public char[][] updateMap() {
-            int platforms = 0;
-            int groundCounter = 0;
+        int platforms = 0;
+        int groundCounter = 0;
 
-            // buscamos info
-            for (int i = 0; i < 16; i++) {
-                for (int j = 0; j < 29; j++) {
-                    // contamos las plataformas
-                    if (scene[i][j] == ('-'/* plataforma */) && scene[i][j + 1] == ('.' /* cielo */)) {
-                        platforms++;
-                    }
-                    // contamos el suelo
-                    if (i == 15 && scene[15][j] == '-') {
-                        groundCounter++;
-                    }
+        // buscamos info
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 29; j++) {
+                // contamos las plataformas
+                if (scene[i][j] == ('-'/* plataforma */) && scene[i][j + 1] == ('.' /* cielo */)) {
+                    platforms++;
+                }
+                // contamos el suelo
+                if (i == 15 && scene[15][j] == '-') {
+                    groundCounter++;
                 }
             }
-            // avanzamos el scene una posicion
-            for (int i = 0; i < 16; i++) {
-                for (int j = 0; j < 29; j++) {
-                    scene[i][j] = scene[i][j + 1];
-                }
+        }
+        // avanzamos el scene una posicion
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 29; j++) {
+                scene[i][j] = scene[i][j + 1];
             }
-            // pintamos la ultima linea
-            for (int i = 0; i < 16; i++) {
+        }
+        // pintamos la ultima linea
+        for (int i = 0; i < 16; i++) {
 
-                scene[i][29] = '.';
-                if (i == 15 && groundCounter<23)
-                    scene[i][29] = '-';
-            }
-            return scene;
+            scene[i][29] = '.';
+            if (i == 15)
+                scene[i][29] = '-';
+        }
+        return scene;
 
     }
 
@@ -89,15 +89,4 @@ public class EndlessScene {
         }
         return map;
     }
-
 }
-/*
-- ver que plataformas hay hechas
-- maximo de plataformas??
-- velocidad??
-- random progresivo de longitud de plataforma long: 2-90% 3-70% 4-50% 5-20%
-- distancia entre plataformas
-- altura distinta, diferencia de 2?? determinado por random
-- enemigos
-- power ups
-*/

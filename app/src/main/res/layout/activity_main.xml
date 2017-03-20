@@ -8,14 +8,18 @@
     tools:context="com.example.billy.jumpit.MainActivity"
     android:background="@android:color/holo_green_light">
 
-
-
     <view
-        android:id="@+id/view"
+        android:id="@+id/view4"
         class="com.example.billy.jumpit.GameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible" />
+        android:visibility="invisible" />
+
+    <view
+        android:id="@+id/view"
+        class="com.example.billy.jumpit.MainMenuView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -32,8 +36,7 @@
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/linearLayout">
+        android:layout_alignParentEnd="true">
 
         <TextView
             android:text="0"
@@ -116,8 +119,7 @@
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:alpha="1"
-        android:visibility="visible" />
+        android:alpha="1" />
 
 
 </RelativeLayout>

@@ -1,11 +1,7 @@
 package com.example.billy.jumpit;
 
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.graphics.Canvas;
-import android.os.Bundle;
 import android.app.Activity;
-import android.view.MotionEvent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -13,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 
 
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
@@ -108,6 +103,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         vistaOpciones = (View)findViewById(R.id.options);
         volumeControl = (SeekBar)findViewById(R.id.volumeBar);
         vistaTienda = (View)findViewById(R.id.shopView);
+        final View gameView = (View)findViewById(R.id.view4);
+        final View mainMenuView = (View)findViewById(R.id.view);
 
 //listener de la barra de control del volumen
         volumeControl.setOnSeekBarChangeListener(this);
@@ -142,6 +139,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 options.setVisibility(View.INVISIBLE);
                 shopButton.startAnimation(fadeout);
                 shopButton.setVisibility(View.INVISIBLE);
+                gameView.setVisibility(View.VISIBLE);
+                mainMenuView.setVisibility(View.INVISIBLE);
 
             }
         });

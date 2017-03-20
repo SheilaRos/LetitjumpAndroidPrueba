@@ -8,31 +8,30 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by dam on 2/3/17.
+ * Created by dam on 20/3/17.
  */
 
-public class GameView extends View {
+public class MainMenuView extends View {
     private BitmapSet bitmapSet;
-    private EndlessScene endlessScene;
+    private MainMenuBackgroundScene mainMenuBackgroundScene;
     private Bonk bonk;
     private boolean jump = false;
     private int bonkDrawerCounter = 0;
-
-    public GameView(Context context) {
+    public MainMenuView(Context context) {
         this(context, null, 0);
     }
 
-    public GameView(Context context, AttributeSet attrs) {
+    public MainMenuView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MainMenuView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         bitmapSet = new BitmapSet(this.getResources());
-        endlessScene = new EndlessScene(bitmapSet);
+        mainMenuBackgroundScene = new MainMenuBackgroundScene(bitmapSet);
         bonk = new Bonk(bitmapSet);
     }
-// dibujar la pantalla
+
     @Override
     public void onDraw(Canvas canvas) {
         this.postInvalidateDelayed(1);
@@ -41,17 +40,10 @@ public class GameView extends View {
         canvas.scale(sc, sc);
         if (jump)
             doJump();
-        endlessScene.draw(canvas, 3);
+        mainMenuBackgroundScene.draw(canvas);
         Log.e("bonk x: ", ""+bonk.getX());
         Log.e("bonk y: ", ""+bonk.getY());
         bonk.draw(canvas);
-//        if (bonkDrawerCounter>1) {
-//            bonk.draw(canvas);
-//            bonkDrawerCounter = 0;
-//        }else
-//            bonkDrawerCounter++;
-
-
     }
     public void doJump(){
         if (checkGround() && !goingUp) {
@@ -93,22 +85,22 @@ public class GameView extends View {
             }
         }
     }
-// variables para controlar el salto
+    // variables para controlar el salto
     boolean goingUp = true;
     int jumpLength = 0;
     int count = 0;//
 
-//detectar el tap para saltar
+    //detectar el tap para saltar
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         jump = true;
         return true;
     }
-// comprobar si hay suelo debajo y posicionar el personaje cuando este cayendo
+    // comprobar si hay suelo debajo y posicionar el personaje cuando este cayendo
     public boolean checkGround() {
         int r = bonk.getY() >> 4;
         int c = bonk.getX() >> 4;
-        if (!endlessScene.isGround(r+2, c))
+        if (!mainMenuBackgroundScene.isGround(r+2, c))
             return false;
         else if (!goingUp) {
             bonk.setY(r << 4);
