@@ -19,6 +19,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
     boolean musicaOn = true;
     private View vistaOpciones;
+    private View vistaTienda;
     private SeekBar volumeControl;
     private ImageButton volume;
 
@@ -96,7 +97,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         final ImageButton play = (ImageButton)findViewById(R.id.play);
         volume = (ImageButton)findViewById(R.id.volumeButton);
         final ImageButton options = (ImageButton)findViewById(R.id.optionsButton);
-        ImageButton close = (ImageButton)findViewById(R.id.closeButton);
+        final ImageButton shopButton = (ImageButton)findViewById(R.id.shopButton);
+        ImageButton closeOption = (ImageButton)findViewById(R.id.closeButton);
+        ImageButton closeShop = (ImageButton)findViewById(R.id.exitBtn);
         final TextView title = (TextView)findViewById(R.id.Title);
         final TextView coins = (TextView)findViewById(R.id.coins);
         final TextView diamonds = (TextView)findViewById(R.id.diamonds);
@@ -104,6 +107,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         final ImageView diamonds_image = (ImageView)findViewById(R.id.diamonds_image);
         vistaOpciones = (View)findViewById(R.id.options);
         volumeControl = (SeekBar)findViewById(R.id.volumeBar);
+        vistaTienda = (View)findViewById(R.id.shopView);
 
 //listener de la barra de control del volumen
         volumeControl.setOnSeekBarChangeListener(this);
@@ -111,6 +115,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
 //hacer invisible las views
         vistaOpciones.setVisibility(View.INVISIBLE);
+        vistaTienda.setVisibility(View.INVISIBLE);
+
 
 //crear listener del play
         play.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +140,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 volume.setVisibility(View.INVISIBLE);
                 options.startAnimation(fadeout);
                 options.setVisibility(View.INVISIBLE);
+                shopButton.startAnimation(fadeout);
+                shopButton.setVisibility(View.INVISIBLE);
 
             }
         });
@@ -156,7 +164,22 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 }
             }
         });
-
+//crear listener de la tienda
+     shopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vistaTienda.startAnimation(fadein);
+                vistaTienda.setVisibility(View.VISIBLE);
+            }
+        });
+//crear listener para cerrar las opciones
+        closeShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vistaTienda.startAnimation(fadeout);
+                vistaTienda.setVisibility(View.INVISIBLE);
+            }
+        });
 //crear listener de las opciones
         options.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +190,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         });
 
 //crear listener para cerrar las opciones
-        close.setOnClickListener(new View.OnClickListener() {
+        closeOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 vistaOpciones.startAnimation(fadeout);
