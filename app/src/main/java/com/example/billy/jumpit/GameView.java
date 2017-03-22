@@ -35,13 +35,13 @@ public class GameView extends View {
 // dibujar la pantalla
     @Override
     public void onDraw(Canvas canvas) {
-        this.postInvalidateDelayed(1);
+        this.postInvalidateDelayed(10);
         if (bitmapSet == null) return;
         float sc = getHeight() / (16 * 16f);
         canvas.scale(sc, sc);
         if (jump)
             doJump();
-        endlessScene.draw(canvas, 3);
+        endlessScene.draw(canvas, 4);
         Log.e("bonk x: ", ""+bonk.getX());
         Log.e("bonk y: ", ""+bonk.getY());
         bonk.draw(canvas);
@@ -50,8 +50,6 @@ public class GameView extends View {
 //            bonkDrawerCounter = 0;
 //        }else
 //            bonkDrawerCounter++;
-
-
     }
     public void doJump(){
         if (checkGround() && !goingUp) {
