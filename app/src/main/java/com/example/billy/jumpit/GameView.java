@@ -16,7 +16,9 @@ public class GameView extends View {
     private EndlessScene endlessScene;
     private Bonk bonk;
     private boolean jump = false;
+    private boolean falling = false;
     private int bonkDrawerCounter = 0;
+    private int vel = 4;
 
     public GameView(Context context) {
         this(context, null, 0);
@@ -39,9 +41,11 @@ public class GameView extends View {
         if (bitmapSet == null) return;
         float sc = getHeight() / (16 * 16f);
         canvas.scale(sc, sc);
-        if (jump)
+        if (jump && !falling)
             doJump();
-        endlessScene.draw(canvas, 4);
+        if (checkGroundRunning() && !jump)
+            fall();
+        endlessScene.draw(canvas, vel);
         Log.e("bonk x: ", ""+bonk.getX());
         Log.e("bonk y: ", ""+bonk.getY());
         bonk.draw(canvas);
@@ -99,6 +103,7 @@ public class GameView extends View {
 //detectar el tap para saltar
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (!falling)
         jump = true;
         return true;
     }
@@ -113,5 +118,21 @@ public class GameView extends View {
             jumpLength=0;
         }
         return true;
+    }
+    public boolean checkGroundRunning(){
+        int r = bonk.getY() >> 4;
+        int c = bonk.getX() >> 4;
+        if (!endlessScene.isGround(r+2,c)){
+            return true;
+        }else
+            return false;
+    }
+    public void fall(){
+        int r = bonk.getY() >> 4;
+        int c = bonk.getX() >> 4;
+        falling = true;
+        bonk.setY(bonk.getY()+2);
+
+
     }
 }
