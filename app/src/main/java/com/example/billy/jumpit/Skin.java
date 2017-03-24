@@ -5,14 +5,27 @@ package com.example.billy.jumpit;
  */
 
 import android.content.Context;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Skin extends LinearLayout {
-    private ImageButton skin,powerUp,monedas,gemas,exit;
+    private ImageView imgskin;
+    private TextView nameskin;
+    private List<ClassSkin> datas;
+    private Button button;
 
     public Skin(Context context) {
         this(context, null, 0);
@@ -26,6 +39,20 @@ public class Skin extends LinearLayout {
         super(context, attrs, defStyleAttr);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.skins, this);
+        datas = new ArrayList<>();
+        datas.add(new ClassSkin("pepe", R.drawable.audiooff));
+        datas.add(new ClassSkin("quim", R.drawable.audioon));
+        datas.add(new ClassSkin("adrian", R.drawable.audiooff));
+        datas.add(new ClassSkin("bily", R.drawable.audiooff));
+        datas.add(new ClassSkin("sheila", R.drawable.audiooff));
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleView);
+        recyclerView.setAdapter(new MaterialPaletteAdapter(datas));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
     }
+
+
 
 }

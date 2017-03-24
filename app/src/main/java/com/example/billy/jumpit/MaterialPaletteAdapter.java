@@ -1,0 +1,80 @@
+package com.example.billy.jumpit;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPaletteAdapter.PaletteViewHolder> {
+    private List<ClassSkin> data;
+    RecyclerView list;
+    Context context;
+    ArrayList <Integer> imagenes = new ArrayList();
+    int i = 0;
+
+    public MaterialPaletteAdapter(@NonNull List<ClassSkin> data) {
+        this.data = data;
+    }
+
+    @Override
+    public PaletteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementskin, parent, false);
+        return new PaletteViewHolder(row);
+    }
+
+    @Override
+    public void onBindViewHolder(PaletteViewHolder holder, int position) {
+        imagenes.add(R.drawable.audiooff);imagenes.add(R.drawable.audioon);imagenes.add(R.drawable.carro);
+        imagenes.add(R.drawable.logros);imagenes.add(R.drawable.opciones);
+
+        ClassSkin color = data.get(position);
+        Log.e("Mostrar mierda: ", color.getNombre());
+        holder.getTitleTextView().setText(color.getNombre());
+        holder.getImageskin().setImageResource(imagenes.get(i));
+        holder.getBtnskin();i = i+1;
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
+    class PaletteViewHolder extends RecyclerView.ViewHolder {
+        private TextView titleTextView;
+        private ImageView imageskin;
+        private Button btnskin;
+
+        public PaletteViewHolder(View elementskin) {
+            super(elementskin);
+            titleTextView = (TextView) itemView.findViewById(R.id.nameskin);
+            imageskin = (ImageView) itemView.findViewById(R.id.photoskin);
+            btnskin = (Button) itemView.findViewById(R.id.buttonskin);
+        }
+
+        public TextView getTitleTextView() {
+            return titleTextView;
+        }
+
+        public ImageView getImageskin() {
+            return imageskin;
+        }
+
+        public Button getBtnskin() {
+            return btnskin;
+        }
+
+    }
+}
