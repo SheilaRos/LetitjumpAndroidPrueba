@@ -51,35 +51,51 @@
             android:weightSum="1">
 
             <ImageButton
-                android:id="@+id/exitBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/btn_dialog" />
-
-            <ImageButton
-                android:id="@+id/monedas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.62"
-                android:background="@android:color/holo_blue_dark"
-                app:srcCompat="?attr/actionModeBackground" />
-
-            <ImageButton
                 android:id="@+id/gemas"
                 android:layout_width="match_parent"
-                android:layout_height="111dp"
-                android:layout_weight="0.37"
+                android:layout_height="match_parent"
                 android:background="@android:drawable/star_on"
                 app:srcCompat="?attr/actionModeBackground" />
 
         </LinearLayout>
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/exitBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="0.63"
+        android:visibility="visible"
+        app:srcCompat="@android:drawable/btn_dialog" />
+
+    <view
+        android:id="@+id/view6"
+        class="com.example.billy.jumpit.PowerUp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:alpha="1"
+        android:visibility="visible" />
+
     <view
         android:id="@+id/view5"
         class="com.example.billy.jumpit.Skin"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:alpha="1"
+        android:visibility="visible" />
+
+    <view
+        android:id="@+id/view7"
+        class="com.example.billy.jumpit.Gems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:alpha="1"
         android:visibility="visible" />
