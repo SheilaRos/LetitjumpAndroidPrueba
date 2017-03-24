@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 
 /**
  * Created by dam on 2/3/17.
@@ -19,6 +20,8 @@ public class GameView extends View {
     private boolean falling = false;
     private int bonkDrawerCounter = 0;
     private int vel = 4;
+    private boolean paused = false;
+    private ImageButton pauseButton;
 
     public GameView(Context context) {
         this(context, null, 0);
@@ -33,21 +36,22 @@ public class GameView extends View {
         bitmapSet = new BitmapSet(this.getResources());
         endlessScene = new EndlessScene(bitmapSet);
         bonk = new Bonk(bitmapSet);
+        pauseButton = (ImageButton) findViewById(R.id.pause);
     }
+
 // dibujar la pantalla
     @Override
     public void onDraw(Canvas canvas) {
-        this.postInvalidateDelayed(10);
+        if (!paused)
+            this.postInvalidateDelayed(10);
         if (bitmapSet == null) return;
         float sc = getHeight() / (16 * 16f);
         canvas.scale(sc, sc);
         if (jump && !falling)
             doJump();
-        if (checkGroundRunning() && !jump)
+        if (!checkGroundRunning() && !jump)
             fall();
         endlessScene.draw(canvas, vel);
-        Log.e("bonk x: ", ""+bonk.getX());
-        Log.e("bonk y: ", ""+bonk.getY());
         bonk.draw(canvas);
 //        if (bonkDrawerCounter>1) {
 //            bonk.draw(canvas);
@@ -104,7 +108,7 @@ public class GameView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (!falling)
-        jump = true;
+            jump = true;
         return true;
     }
 // comprobar si hay suelo debajo y posicionar el personaje cuando este cayendo
@@ -119,20 +123,25 @@ public class GameView extends View {
         }
         return true;
     }
+// comprueba si hay suelo mientras corre
     public boolean checkGroundRunning(){
         int r = bonk.getY() >> 4;
         int c = bonk.getX() >> 4;
         if (!endlessScene.isGround(r+2,c)){
-            return true;
-        }else
             return false;
+        }else {
+            falling = false;
+            return true;
+        }
     }
+// caida del personaje
     public void fall(){
         int r = bonk.getY() >> 4;
         int c = bonk.getX() >> 4;
         falling = true;
         bonk.setY(bonk.getY()+2);
-
+    }
+    public void end(){
 
     }
 }

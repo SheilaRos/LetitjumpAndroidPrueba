@@ -114,7 +114,6 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         vistaOpciones.setVisibility(View.INVISIBLE);
         vistaTienda.setVisibility(View.INVISIBLE);
 
-
 //crear listener del play
         play.setOnClickListener(new View.OnClickListener() {
             @Override

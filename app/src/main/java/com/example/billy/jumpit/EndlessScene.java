@@ -3,6 +3,7 @@ package com.example.billy.jumpit;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 
 /**
  * Created by dam on 10/2/17.
@@ -14,6 +15,7 @@ public class EndlessScene {
     private BitmapSet bitmapSet;
     private int cont = 0;
     private int mapVel = 4;
+    private int platformsDistance = 0;
 
     public EndlessScene(BitmapSet bitmapSet) {
         this.bitmapSet = bitmapSet;
@@ -63,17 +65,24 @@ public class EndlessScene {
         int platformsLong2 = 0;
         int platformsLong3 = 0;
         int groundCounter = 0;
-
+        int rng = 0;
+        int creatingPlatformLong = 0;
+        int lastPlatformAltitude = 0;
+        platformsDistance++;
         // buscamos info
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 29; j++) {
                 // contamos las plataformas
-                if (scene[i][j] == ('-'/* plataforma */) && scene[i][j + 1] == ('.' /* cielo */)) {
+                if (i != 15 && scene[i][j] == ('-'/* plataforma */) && scene[i][j + 1] == ('.' /* cielo */)) {
                     platforms++;
                 }
                 // contamos el suelo
                 if (i == 15 && scene[15][j] == '-') {
                     groundCounter++;
+                }
+                if (j == 28 && scene[i][j+1] == ('-'/* plataforma */)){
+                    lastPlatformAltitude = i;
+                    Log.e("plat", "" + lastPlatformAltitude);
                 }
             }
         }
@@ -85,14 +94,50 @@ public class EndlessScene {
         }
         // pintamos la ultima linea
         for (int i = 0; i < 16; i++) {
-            if (platforms < 3)
-                scene[i][29] = '.';
-            if (i == 15 && groundCounter < 23)
+            if (i == 15 && groundCounter < 5) {
                 scene[i][29] = '-';
+            }else {
+                //pintar plataforma nueva
+                if (platforms < 3 && i == 15 && platformsDistance>7) {
+                    rng = (int) (Math.random() * 8 - 2);
+                    Log.e("Random", "" + rng);
+                    if ((lastPlatformAltitude + rng) >= 0 && (lastPlatformAltitude + rng) <16) {
+                        rng = rng + lastPlatformAltitude;
+                        Log.e("Random2", "" + rng);
+                        scene[rng][29] = '-';
+                        platformsDistance = 0;
+                    }
+                }else {
+                    // pintar cielo
+                    scene[i][29] = '.';
+                }
+                // random de la longitud de la plataforma
+                if (scene[i][28] == '-') {
+                    for (int j = 28; j > 24; j--) {
+                        if (scene[i][j] == '-')
+                            creatingPlatformLong++;
+                    }
+                    rng = (int) (Math.random() * 10 + creatingPlatformLong);
+
+                    if (rng < 10)
+                        scene[i][29] = '-';
+                }
+
+            }
         }
         return scene;
 
     }
+    /*
+- ver que plataformas hay hechas DONE
+- maximo de plataformas?? DONE
+- velocidad?? DONE
+- random progresivo de longitud de plataforma long: 2-90% 3-70% 4-50% 5-20%
+- distancia entre plataformas
+- altura distinta, diferencia de 2?? determinado por random
+- enemigos
+- power ups
+*/
 // iniciamos el mapa
     public char[][] initiateMap(char[][] map) {
         for (int i = 0; i < 16; i++) {
@@ -104,13 +149,3 @@ public class EndlessScene {
         return map;
     }
 }
-/*
-- ver que plataformas hay hechas
-- maximo de plataformas??
-- velocidad??
-- random progresivo de longitud de plataforma long: 2-90% 3-70% 4-50% 5-20%
-- distancia entre plataformas
-- altura distinta, diferencia de 2?? determinado por random
-- enemigos
-- power ups
-*/
