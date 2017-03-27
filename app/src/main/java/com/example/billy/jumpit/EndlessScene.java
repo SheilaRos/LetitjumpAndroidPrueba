@@ -16,6 +16,7 @@ public class EndlessScene {
     private int cont = 0;
     private int mapVel = 4;
     private int platformsDistance = 0;
+    boolean creatingPlatform = false;
 
     public EndlessScene(BitmapSet bitmapSet) {
         this.bitmapSet = bitmapSet;
@@ -67,22 +68,25 @@ public class EndlessScene {
         int groundCounter = 0;
         int rng = 0;
         int creatingPlatformLong = 0;
-        int lastPlatformAltitude = 0;
+        int lastPlatformAltitude = 15;
+        int checkRng = 0;
+        int lastPlatformX = 20;
         platformsDistance++;
         // buscamos info
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 29; j++) {
                 // contamos las plataformas
-                if (i != 15 && scene[i][j] == ('-'/* plataforma */) && scene[i][j + 1] == ('.' /* cielo */)) {
+                if (scene[i][j] == ('-'/* plataforma */) && scene[i][j + 1] == ('.' /* cielo */)) {
                     platforms++;
+                    lastPlatformX = j;
+                    Log.e("platx: ",""+lastPlatformX);
                 }
                 // contamos el suelo
                 if (i == 15 && scene[15][j] == '-') {
                     groundCounter++;
                 }
-                if (j == 28 && scene[i][j+1] == ('-'/* plataforma */)){
+                if ((j == 28 && scene[i][j] == ('-'/* plataforma */)) && scene[i][j+1] == ('-'/* plataforma */)){
                     lastPlatformAltitude = i;
-                    Log.e("plat", "" + lastPlatformAltitude);
                 }
             }
         }
@@ -94,19 +98,19 @@ public class EndlessScene {
         }
         // pintamos la ultima linea
         for (int i = 0; i < 16; i++) {
-            if (i == 15 && groundCounter < 5) {
-                scene[i][29] = '-';
-            }else {
+//            if (i == 15 && groundCounter < 3) {
+//                scene[i][29] = '-';
+//                creatingPlatform = true;
+//            }else {
                 //pintar plataforma nueva
-                if (platforms < 3 && i == 15 && platformsDistance>7) {
-                    rng = (int) (Math.random() * 8 - 2);
-                    Log.e("Random", "" + rng);
-                    if ((lastPlatformAltitude + rng) >= 0 && (lastPlatformAltitude + rng) <16) {
-                        rng = rng + lastPlatformAltitude;
-                        Log.e("Random2", "" + rng);
+                if (platforms < 6 && i == 15 && lastPlatformX<25 && !creatingPlatform) {
+                    do {
+                        rng = (int) (Math.random() * 15 );
+                        checkRng = rng-lastPlatformAltitude;
+                    }while(rng<6 || checkRng>2 || checkRng<(-2) );
                         scene[rng][29] = '-';
                         platformsDistance = 0;
-                    }
+                        creatingPlatform = true;
                 }else {
                     // pintar cielo
                     scene[i][29] = '.';
@@ -119,12 +123,14 @@ public class EndlessScene {
                     }
                     rng = (int) (Math.random() * 10 + creatingPlatformLong);
 
-                    if (rng < 10)
+                    if (rng < 11)
                         scene[i][29] = '-';
+                    else
+                        creatingPlatform = false;
                 }
 
             }
-        }
+//        }
         return scene;
 
     }

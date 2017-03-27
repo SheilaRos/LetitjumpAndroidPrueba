@@ -19,7 +19,7 @@ public class GameView extends View {
     private boolean jump = false;
     private boolean falling = false;
     private int bonkDrawerCounter = 0;
-    private int vel = 4;
+    private int vel = 3;
     private boolean paused = false;
     private ImageButton pauseButton;
 
