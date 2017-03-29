@@ -41,8 +41,6 @@ public class MainMenuView extends View {
         if (jump)
             doJump();
         mainMenuBackgroundScene.draw(canvas);
-        Log.e("bonk x: ", ""+bonk.getX());
-        Log.e("bonk y: ", ""+bonk.getY());
         bonk.draw(canvas);
     }
     public void doJump(){

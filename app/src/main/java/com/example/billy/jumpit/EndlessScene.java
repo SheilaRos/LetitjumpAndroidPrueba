@@ -79,7 +79,6 @@ public class EndlessScene {
                 if (scene[i][j] == ('-'/* plataforma */) && scene[i][j + 1] == ('.' /* cielo */)) {
                     platforms++;
                     lastPlatformX = j;
-                    Log.e("platx: ",""+lastPlatformX);
                 }
                 // contamos el suelo
                 if (i == 15 && scene[15][j] == '-') {
