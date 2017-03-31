@@ -27,6 +27,9 @@ public class EndlessScene {
     public boolean isGround(int y, int x) {
         if (y >= 16)
             return false;
+        if (y<0){
+            return false;
+        }
         char s = scene[y][x];
         if (s == '-') return true;
         if (s == '<') return true;
