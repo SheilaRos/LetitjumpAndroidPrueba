@@ -106,6 +106,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         final View mainMenuView = (View)findViewById(R.id.view);
         score = (TextView) findViewById(R.id.score);
 
+        ((GameView)gameView).setScoreTextView(score);
+
+
 //listener de la barra de control del volumen
         volumeControl.setOnSeekBarChangeListener(this);
 

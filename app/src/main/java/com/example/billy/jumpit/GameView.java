@@ -30,6 +30,8 @@ public class GameView extends View {
     private int jumpAux;
     private int score = 0;
 
+    private TextView scoreTextView;
+
     public GameView(Context context) {
         this(context, null, 0);
     }
@@ -63,6 +65,9 @@ public class GameView extends View {
         }
         endlessScene.draw(canvas, vel);
         bonk.draw(canvas);
+        if (score%100 == 1){
+            scoreTextView.setText("Score: " + (score-1));
+        }
         score ++;
         Log.e("Puntuacion: ", ""+score);
     }
@@ -102,6 +107,7 @@ public class GameView extends View {
     public boolean checkGround() {
         int r = bonk.getY() >> 4;
         if (r <= 0 || r >=16){
+            scoreTextView.setText("Score: " + score);
             paused = true;
         }
         int c = bonk.getX() >> 4;
@@ -116,5 +122,13 @@ public class GameView extends View {
             }
         }
         return true;
+    }
+
+    public TextView getScoreTextView() {
+        return scoreTextView;
+    }
+
+    public void setScoreTextView(TextView scoreTextView) {
+        this.scoreTextView = scoreTextView;
     }
 }
