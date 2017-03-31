@@ -1,12 +1,15 @@
 package com.example.billy.jumpit;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 /**
  * Created by dam on 2/3/17.
@@ -16,7 +19,7 @@ public class GameView extends View {
     private BitmapSet bitmapSet;
     private EndlessScene endlessScene;
     private Bonk bonk;
-    private ImageButton pauseButton;
+    ImageButton pauseButton;
     private int vel = 4;
     private boolean paused = false;
     private boolean jump = false;
@@ -25,6 +28,7 @@ public class GameView extends View {
     private int jumpIncrement = 2;
     private int jumpMaxHeigh = 70;
     private int jumpAux;
+    private int score = 0;
 
     public GameView(Context context) {
         this(context, null, 0);
@@ -43,6 +47,7 @@ public class GameView extends View {
         // vel = bonk.getVel();
         // jumpMaxHeigh = bonk.getJumpMaxHeigh();
     }
+
     // dibujar la pantalla
     @Override
     public void onDraw(Canvas canvas) {
@@ -58,6 +63,8 @@ public class GameView extends View {
         }
         endlessScene.draw(canvas, vel);
         bonk.draw(canvas);
+        score ++;
+        Log.e("Puntuacion: ", ""+score);
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -94,6 +101,9 @@ public class GameView extends View {
     }
     public boolean checkGround() {
         int r = bonk.getY() >> 4;
+        if (r <= 0 || r >=16){
+            paused = true;
+        }
         int c = bonk.getX() >> 4;
         if (!endlessScene.isGround(r+2, c)){
             stateJumping = true;

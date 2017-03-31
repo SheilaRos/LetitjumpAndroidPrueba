@@ -17,6 +17,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     private View vistaTienda;
     private SeekBar volumeControl;
     private ImageButton volume;
+    private TextView score;
 
 // barra de control del volumen
     @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -50,8 +51,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         audio.load(this);
         audio.startMusic();
     }
-    // comandos para poner la pantalla completa y que sea automatico
 
+    // comandos para poner la pantalla completa y que sea automatico
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -65,8 +66,6 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +104,10 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         vistaTienda = (View)findViewById(R.id.shopView);
         final View gameView = (View)findViewById(R.id.view4);
         final View mainMenuView = (View)findViewById(R.id.view);
+        score = (TextView) findViewById(R.id.score);
 
 //listener de la barra de control del volumen
         volumeControl.setOnSeekBarChangeListener(this);
-
 
 //hacer invisible las views
         vistaOpciones.setVisibility(View.INVISIBLE);
@@ -118,7 +117,6 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //usar animacion fadeout para los elementos del menu
                 play.startAnimation(fadeout);
                 play.setVisibility(View.INVISIBLE);
@@ -140,16 +138,13 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 shopButton.setVisibility(View.INVISIBLE);
                 gameView.setVisibility(View.VISIBLE);
                 mainMenuView.setVisibility(View.INVISIBLE);
-
             }
         });
-
-
 //crear listener del volume para mute o play again
         volume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (musicaOn==true){
+                if (musicaOn){
                     audio.stopMusic();
                     musicaOn=false;
                     volume.setBackgroundResource(R.drawable.audiooff);
@@ -197,6 +192,5 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         });
 
     }
-
 }
 
