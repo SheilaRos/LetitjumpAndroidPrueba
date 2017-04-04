@@ -110,7 +110,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:alpha="1"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <view
         android:id="@+id/view2"
@@ -120,7 +120,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:alpha="1"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <ImageButton
         android:id="@+id/pause"
