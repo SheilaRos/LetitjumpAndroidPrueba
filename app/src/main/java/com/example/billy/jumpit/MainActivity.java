@@ -17,9 +17,12 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     private View vistaTienda;
     private SeekBar volumeControl;
     private ImageButton volume;
-    private TextView score;
+    private TextView score, scoreText;
+    private Bundle bundle;
+    private ImageButton reloadEndless, goHome;
 
-// barra de control del volumen
+
+    // barra de control del volumen
     @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         final float volumen = (float) (1 - (Math.log(100 - volumeControl.getProgress()) / Math.log(100)));
         audio.setVolume(volumen, volumen);
@@ -71,6 +74,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bundle = savedInstanceState;
 
 //crear animacion slideout
         final Animation slideout;
@@ -102,12 +106,25 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         vistaOpciones = (View)findViewById(R.id.options);
         volumeControl = (SeekBar)findViewById(R.id.volumeBar);
         vistaTienda = (View)findViewById(R.id.shopView);
-        final View gameView = (View)findViewById(R.id.view4);
+        final GameView gameView = (GameView)findViewById(R.id.view4);
         final View mainMenuView = (View)findViewById(R.id.view);
         score = (TextView) findViewById(R.id.score);
+        final ImageButton pause = (ImageButton)findViewById(R.id.pause);
+        reloadEndless = (ImageButton)findViewById(R.id.reloadEndless);
+        goHome = (ImageButton)findViewById(R.id.goHome);
+        scoreText = (TextView)findViewById(R.id.scoreEndText);
 
-        ((GameView)gameView).setScoreTextView(score);
+        gameView.setScoreTextView(score);
+        gameView.setMainActivity(this);
+        gameView.setPauseButton(pause);
+        gameView.setGoHome(goHome);
+        gameView.setReload(reloadEndless);
+        gameView.setScoreText(scoreText);
 
+//Visibilities
+        goHome.setVisibility(View.INVISIBLE);
+        reloadEndless.setVisibility(View.INVISIBLE);
+        scoreText.setVisibility(View.INVISIBLE);
 
 //listener de la barra de control del volumen
         volumeControl.setOnSeekBarChangeListener(this);
@@ -139,6 +156,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 options.setVisibility(View.INVISIBLE);
                 shopButton.startAnimation(fadeout);
                 shopButton.setVisibility(View.INVISIBLE);
+                pause.setVisibility(View.VISIBLE);
                 gameView.setVisibility(View.VISIBLE);
                 mainMenuView.setVisibility(View.INVISIBLE);
             }
@@ -194,6 +212,10 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
             }
         });
 
+    }
+
+    public Bundle getBundle() {
+        return bundle;
     }
 }
 

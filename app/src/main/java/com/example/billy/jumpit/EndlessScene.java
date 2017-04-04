@@ -87,7 +87,7 @@ public class EndlessScene {
                 if (i == 15 && scene[15][j] == '-') {
                     groundCounter++;
                 }
-                if ((j == 28 && scene[i][j] == ('-'/* plataforma */)) && scene[i][j+1] == ('-'/* plataforma */)){
+                if ( scene[i][29] == ('-'/* plataforma */)){
                     lastPlatformAltitude = i;
                 }
             }
