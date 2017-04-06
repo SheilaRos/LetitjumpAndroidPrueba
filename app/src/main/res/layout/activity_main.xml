@@ -132,22 +132,6 @@
         android:visibility="invisible"
         app:srcCompat="@android:drawable/ic_media_pause" />
 
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Score = 0"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/pause" />
-
-    <TextView
-        android:id="@+id/scoreEndText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/play"
-        android:layout_centerHorizontal="true"
-        android:text="TextView" />
-
     <ImageButton
         android:id="@+id/goHome"
         android:layout_width="50dp"
@@ -162,11 +146,11 @@
         android:id="@+id/reloadEndless"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignEnd="@+id/optionsButton"
-        android:layout_below="@+id/scoreEndText"
-        android:layout_marginEnd="22dp"
+        android:layout_marginEnd="23dp"
         android:background="@android:drawable/ic_popup_sync"
-        app:srcCompat="@android:drawable/ic_popup_sync" />
+        app:srcCompat="@android:drawable/ic_popup_sync"
+        android:layout_alignTop="@+id/play"
+        android:layout_alignEnd="@+id/optionsButton" />
 
 
 </RelativeLayout>

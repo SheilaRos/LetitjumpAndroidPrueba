@@ -17,7 +17,6 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     private View vistaTienda;
     private SeekBar volumeControl;
     private ImageButton volume;
-    private TextView score, scoreText;
     private Bundle bundle;
     private ImageButton reloadEndless, goHome;
 
@@ -108,23 +107,18 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         vistaTienda = (View)findViewById(R.id.shopView);
         final GameView gameView = (GameView)findViewById(R.id.view4);
         final View mainMenuView = (View)findViewById(R.id.view);
-        score = (TextView) findViewById(R.id.score);
         final ImageButton pause = (ImageButton)findViewById(R.id.pause);
         reloadEndless = (ImageButton)findViewById(R.id.reloadEndless);
         goHome = (ImageButton)findViewById(R.id.goHome);
-        scoreText = (TextView)findViewById(R.id.scoreEndText);
 
-        gameView.setScoreTextView(score);
         gameView.setMainActivity(this);
         gameView.setPauseButton(pause);
         gameView.setGoHome(goHome);
         gameView.setReload(reloadEndless);
-        gameView.setScoreText(scoreText);
 
 //Visibilities
         goHome.setVisibility(View.INVISIBLE);
         reloadEndless.setVisibility(View.INVISIBLE);
-        scoreText.setVisibility(View.INVISIBLE);
 
 //listener de la barra de control del volumen
         volumeControl.setOnSeekBarChangeListener(this);

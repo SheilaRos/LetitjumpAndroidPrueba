@@ -3,6 +3,7 @@ package com.example.billy.jumpit;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -20,11 +21,15 @@ import static android.R.drawable.ic_media_play;
  */
 
 public class GameView extends View {
+    private Paint paint;
     private BitmapSet bitmapSet;
+    private PokemonBitmapSet pokemonBitmapSet;
     private EndlessScene endlessScene;
     private Bonk bonk;
+    private Character character;
     private ImageButton pauseButton;
     private int vel = 4;
+    private int velCounter = 1;
     private boolean paused = false;
     private boolean jump = false;
     private boolean stateJumping = false;
@@ -36,7 +41,6 @@ public class GameView extends View {
     private MainActivity mainActivity;
     private ImageButton goHome;
     private ImageButton reload;
-    private TextView scoreText;
 
 
     private TextView scoreTextView;
@@ -52,8 +56,12 @@ public class GameView extends View {
     public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         bitmapSet = new BitmapSet(this.getResources());
+        pokemonBitmapSet = new PokemonBitmapSet(this.getResources());
         endlessScene = new EndlessScene(bitmapSet);
         bonk = new Bonk(bitmapSet);
+        character = new Character(pokemonBitmapSet);
+        paint = new Paint();
+        paint.setTextSize(10);
         // vel = bonk.getVel();
         // jumpMaxHeigh = bonk.getJumpMaxHeigh();
     }
@@ -64,6 +72,7 @@ public class GameView extends View {
         this.postInvalidateDelayed(10);
         if (!paused) {
             if (bitmapSet == null) return;
+            if (pokemonBitmapSet == null) return;
             float sc = getHeight() / (16 * 16f);
             canvas.scale(sc, sc);
             if (jump) {
@@ -72,13 +81,12 @@ public class GameView extends View {
                 doGoingDown();
             }
             endlessScene.draw(canvas, vel);
-            bonk.draw(canvas);
-            if (score % 200 == 1) {
-                scoreTextView.setText("Score = " + (score - 1));
-//                if (score % 3000 == 1) {
-//                    vel++;
-//                    bonk.setVel(vel);
-//                }
+//            bonk.draw(canvas);
+            character.draw(canvas);
+            canvas.drawText("SCORE: "+score, 35,20, paint);
+            if (score / 3000 == velCounter) {
+                vel++;
+                velCounter++;
             }
             score++;
         }else {
@@ -86,8 +94,9 @@ public class GameView extends View {
             float sc = getHeight() / (16 * 16f);
             canvas.scale(sc, sc);
             endlessScene.draw(canvas, vel);
-            bonk.draw(canvas);
-              //  mainActivity.onCreate(mainActivity.getBundle());
+//            bonk.draw(canvas);
+            character.draw(canvas);
+            canvas.drawText("SCORE: "+score, 200,100, paint);
         }
     }
     @Override
@@ -108,6 +117,10 @@ public class GameView extends View {
             }
         });
         if (event.getAction() == MotionEvent.ACTION_DOWN && !stateJumping){
+            if (character.getFrame() <= 2 ){
+                character.setFrameCounter(0);
+                character.setFrame(3);
+            }
             jump = true;
             stateJumping = true;
         }
@@ -117,12 +130,15 @@ public class GameView extends View {
         return true;
     }
     public void doGoingUp(){
+
         if (jumpCounter<jumpMaxHeigh-10){
-            bonk.setY(bonk.getY()-jumpIncrement);
+//            bonk.setY(bonk.getY()-jumpIncrement);
+            character.setY(character.getY()-jumpIncrement);
             jumpCounter += jumpIncrement;
             jumpAux = jumpCounter;
         }else if(jumpCounter<jumpMaxHeigh){
-            bonk.setY(bonk.getY() - jumpIncrement+1);
+//            bonk.setY(bonk.getY() - jumpIncrement+1);
+            character.setY(character.getY() - jumpIncrement+1);
             jumpCounter += jumpIncrement-1;
             jumpAux = jumpCounter;
         }else if (jumpCounter >= jumpMaxHeigh){
@@ -130,28 +146,40 @@ public class GameView extends View {
         }
     }
     public void doGoingDown(){
+        if (character.getFrame() <= 2 ){
+            character.setFrameCounter(0);
+            character.setFrame(3);
+        }
         if (jumpCounter>jumpAux-10){
-            bonk.setY(bonk.getY() + jumpIncrement-1);
+//            bonk.setY(bonk.getY() + jumpIncrement-1);
+            character.setY(character.getY() + jumpIncrement-1);
             jumpCounter -= jumpIncrement-1;
         }else {
-            bonk.setY(bonk.getY()+jumpIncrement);
+//            bonk.setY(bonk.getY()+jumpIncrement);
+            character.setY(character.getY()+jumpIncrement);
             jumpCounter -= jumpIncrement;
         }
     }
     public boolean checkGround() {
-        int r = bonk.getY() >> 4;
+        if (character.getFrame() > 2 && !stateJumping){
+            character.setFrameCounter(0);
+            character.setFrame(0);
+        }
+//        int r = bonk.getY() >> 4;
+        int r = (character.getY()) >> 4;
         if (r >=16){
-            scoreTextView.setText("Score = " + score);
             paused = true;
             end();
         }
-        int c = bonk.getX() >> 4;
+//        int c = bonk.getX() >> 4;
+        int c = character.getX() >> 4;
         if (!endlessScene.isGround(r+2, c)){
             stateJumping = true;
             return false;
         }else {
             if (!jump) {
-                bonk.setY(r << 4);
+//                bonk.setY(r << 4);
+                character.setY((r << 4) + 8);
                 stateJumping = false;
                 jumpCounter = 0;
             }
@@ -162,8 +190,6 @@ public class GameView extends View {
     public void end(){
         goHome.setVisibility(VISIBLE);
         reload.setVisibility(VISIBLE);
-        scoreText.setText("SCORE: "+score);
-        scoreText.setVisibility(VISIBLE);
 
         goHome.setOnClickListener(new OnClickListener() {
             @Override
@@ -176,7 +202,9 @@ public class GameView extends View {
             public void onClick(View v) {
                 endlessScene = new EndlessScene(bitmapSet);
                 bonk = new Bonk(bitmapSet);
+                character = new Character(pokemonBitmapSet);
                 vel = 4;
+                velCounter = 1;
                 paused = false;
                 jump = false;
                 stateJumping = false;
@@ -186,7 +214,6 @@ public class GameView extends View {
                 score = 0;
                 goHome.setVisibility(INVISIBLE);
                 reload.setVisibility(INVISIBLE);
-                scoreText.setVisibility(INVISIBLE);
             }
         });
     }
@@ -229,13 +256,5 @@ public class GameView extends View {
 
     public void setReload(ImageButton reload) {
         this.reload = reload;
-    }
-
-    public TextView getScoreText() {
-        return scoreText;
-    }
-
-    public void setScoreText(TextView scoreText) {
-        this.scoreText = scoreText;
     }
 }
