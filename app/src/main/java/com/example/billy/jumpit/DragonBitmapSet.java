@@ -13,14 +13,13 @@ public class DragonBitmapSet {
     private Bitmap[] bitmaps;
 
     private int[][] sheetInfo = {
-            { 37, 33, 22, 22, 0 },	//  0: Running right 1
-            { 28, 65, 32, 28, 0 },	//  1: Running right 2
-            { 28, 96, 32, 28, 0 },	//  2: Running right 3
-            { 28, 124, 32, 32, 0 },	//  3: Biking right 1
-            { 28, 156, 32, 32, 0 }, //  4: Biking right 2
-            { 28, 188, 32, 32, 0 }, //  5: Biking right 3
-            { 60, 156, 32, 32, 0 }, //  6: Biking jump right 1
-            { 60, 220, 32, 32, 0 }, //  7: Biking jump right 2
+            { 281, 165, 30, 22, 0 },//  0: firing right 1
+            { 317, 165, 37, 22, 0 },//  1: firing right 2
+            { 360, 163, 41, 24, 0 },	//  2: firing right 3
+            { 407, 167, 44, 22, 0 },	//  3: firing right 4
+            { 110, 39, 33, 21, 0 }, //  4: flying right 1
+            { 145, 42, 34, 18, 0 }, //  5: flying right 2
+            { 181, 41, 33, 19, 0 }, //  6: flying right 3
     };
 
     public Bitmap getBitmap(int i) { return bitmaps[i]; }
@@ -29,7 +28,7 @@ public class DragonBitmapSet {
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inScaled = false;
 
-        Bitmap bitmapsBMP = BitmapFactory.decodeResource(res, R.raw.dppokemonsprites, opts);
+        Bitmap bitmapsBMP = BitmapFactory.decodeResource(res, R.raw.blackdragonpeke, opts);
         Matrix rot1 = new Matrix();
         Matrix rot2 = new Matrix();
         rot2.setScale(-1, 1);

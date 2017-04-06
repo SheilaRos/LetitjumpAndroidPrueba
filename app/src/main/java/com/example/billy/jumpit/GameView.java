@@ -24,8 +24,10 @@ public class GameView extends View {
     private Paint paint;
     private BitmapSet bitmapSet;
     private PokemonBitmapSet pokemonBitmapSet;
+    private DragonBitmapSet dragonBitmapSet;
     private EndlessScene endlessScene;
     private Bonk bonk;
+    private DragonSkin dragonSkin;
     private Character character;
     private ImageButton pauseButton;
     private int vel = 4;
@@ -35,7 +37,7 @@ public class GameView extends View {
     private boolean stateJumping = false;
     private int jumpCounter = 0;
     private int jumpIncrement = 2;
-    private int jumpMaxHeigh = 70;
+    private int jumpMaxHeigh = 120;
     private int jumpAux;
     private int score = 0;
     private MainActivity mainActivity;
@@ -57,9 +59,11 @@ public class GameView extends View {
         super(context, attrs, defStyleAttr);
         bitmapSet = new BitmapSet(this.getResources());
         pokemonBitmapSet = new PokemonBitmapSet(this.getResources());
+        dragonBitmapSet = new DragonBitmapSet(this.getResources());
         endlessScene = new EndlessScene(bitmapSet);
         bonk = new Bonk(bitmapSet);
         character = new Character(pokemonBitmapSet);
+        dragonSkin = new DragonSkin(dragonBitmapSet);
         paint = new Paint();
         paint.setTextSize(10);
         // vel = bonk.getVel();
@@ -73,6 +77,7 @@ public class GameView extends View {
         if (!paused) {
             if (bitmapSet == null) return;
             if (pokemonBitmapSet == null) return;
+            if (dragonBitmapSet == null) return;
             float sc = getHeight() / (16 * 16f);
             canvas.scale(sc, sc);
             if (jump) {
@@ -82,7 +87,8 @@ public class GameView extends View {
             }
             endlessScene.draw(canvas, vel);
 //            bonk.draw(canvas);
-            character.draw(canvas);
+//            character.draw(canvas);
+            dragonSkin.draw(canvas);
             canvas.drawText("SCORE: "+score, 35,20, paint);
             if (score / 3000 == velCounter) {
                 vel++;
@@ -95,7 +101,8 @@ public class GameView extends View {
             canvas.scale(sc, sc);
             endlessScene.draw(canvas, vel);
 //            bonk.draw(canvas);
-            character.draw(canvas);
+//            character.draw(canvas);
+            dragonSkin.draw(canvas);
             canvas.drawText("SCORE: "+score, 200,100, paint);
         }
     }
@@ -117,9 +124,13 @@ public class GameView extends View {
             }
         });
         if (event.getAction() == MotionEvent.ACTION_DOWN && !stateJumping){
-            if (character.getFrame() <= 2 ){
-                character.setFrameCounter(0);
-                character.setFrame(3);
+//            if (character.getFrame() <= 2 ){
+//                character.setFrameCounter(0);
+//                character.setFrame(3);
+//            }
+            if (dragonSkin.getFrame() <= 3 ){
+                dragonSkin.setFrameCounter(0);
+                dragonSkin.setFrame(4);
             }
             jump = true;
             stateJumping = true;
@@ -133,12 +144,14 @@ public class GameView extends View {
 
         if (jumpCounter<jumpMaxHeigh-10){
 //            bonk.setY(bonk.getY()-jumpIncrement);
-            character.setY(character.getY()-jumpIncrement);
+//            character.setY(character.getY()-jumpIncrement);
+            dragonSkin.setY(dragonSkin.getY()-jumpIncrement);
             jumpCounter += jumpIncrement;
             jumpAux = jumpCounter;
         }else if(jumpCounter<jumpMaxHeigh){
 //            bonk.setY(bonk.getY() - jumpIncrement+1);
-            character.setY(character.getY() - jumpIncrement+1);
+//            character.setY(character.getY() - jumpIncrement+1);
+            dragonSkin.setY(dragonSkin.getY() - jumpIncrement+1);
             jumpCounter += jumpIncrement-1;
             jumpAux = jumpCounter;
         }else if (jumpCounter >= jumpMaxHeigh){
@@ -146,39 +159,52 @@ public class GameView extends View {
         }
     }
     public void doGoingDown(){
-        if (character.getFrame() <= 2 ){
-            character.setFrameCounter(0);
-            character.setFrame(3);
+//        if (character.getFrame() <= 2 ){
+//            character.setFrameCounter(0);
+//            character.setFrame(3);
+//        }
+        if (dragonSkin.getFrame() <= 3 ){
+            dragonSkin.setFrameCounter(0);
+            dragonSkin.setFrame(4);
         }
         if (jumpCounter>jumpAux-10){
 //            bonk.setY(bonk.getY() + jumpIncrement-1);
-            character.setY(character.getY() + jumpIncrement-1);
+//            character.setY(character.getY() + jumpIncrement-1);
+            dragonSkin.setY(dragonSkin.getY() + jumpIncrement-1);
             jumpCounter -= jumpIncrement-1;
         }else {
 //            bonk.setY(bonk.getY()+jumpIncrement);
-            character.setY(character.getY()+jumpIncrement);
+//            character.setY(character.getY()+jumpIncrement);
+            dragonSkin.setY(dragonSkin.getY()+jumpIncrement);
             jumpCounter -= jumpIncrement;
         }
     }
     public boolean checkGround() {
-        if (character.getFrame() > 2 && !stateJumping){
-            character.setFrameCounter(0);
-            character.setFrame(0);
+//        if (character.getFrame() > 2 && !stateJumping){
+//            character.setFrameCounter(0);
+//            character.setFrame(0);
+//        }
+        if (dragonSkin.getFrame() > 3 && !stateJumping){
+            dragonSkin.setFrameCounter(0);
+            dragonSkin.setFrame(0);
         }
 //        int r = bonk.getY() >> 4;
-        int r = (character.getY()) >> 4;
+//        int r = (character.getY()) >> 4;
+        int r = (dragonSkin.getY()) >> 4;
         if (r >=16){
             paused = true;
             end();
         }
 //        int c = bonk.getX() >> 4;
-        int c = character.getX() >> 4;
+//        int c = character.getX() >> 4;
+        int c = dragonSkin.getX() >> 4;
         if (!endlessScene.isGround(r+2, c)){
             stateJumping = true;
             return false;
         }else {
             if (!jump) {
 //                bonk.setY(r << 4);
+//                character.setY((r << 4) + 8);
                 character.setY((r << 4) + 8);
                 stateJumping = false;
                 jumpCounter = 0;
@@ -203,6 +229,7 @@ public class GameView extends View {
                 endlessScene = new EndlessScene(bitmapSet);
                 bonk = new Bonk(bitmapSet);
                 character = new Character(pokemonBitmapSet);
+                dragonSkin = new DragonSkin(dragonBitmapSet);
                 vel = 4;
                 velCounter = 1;
                 paused = false;
