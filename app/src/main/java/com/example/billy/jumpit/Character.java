@@ -13,7 +13,7 @@ public class Character {
     private Paint paint;
     private int x, y;
     private int jumpVel;
-    private PokemonBitmapSet pokemonBitmapSet;
+    private BitmapSet bitmapSet;
     private int frameCounter;
 
     public int getFrame() {
@@ -56,8 +56,8 @@ public class Character {
         this.frameCounter = frameCounter;
     }
 
-    public Character(PokemonBitmapSet pokemonBitmapSet) {
-        this.pokemonBitmapSet = pokemonBitmapSet;
+    public Character(BitmapSet bitmapSet) {
+        this.bitmapSet = bitmapSet;
         frame = 0;
         frameCounter = 0;
         paint = new Paint();
@@ -67,7 +67,7 @@ public class Character {
     }
 
     public void draw(Canvas canvas) {
-        Bitmap sprite = pokemonBitmapSet.getBitmap(frame);
+        Bitmap sprite = bitmapSet.getBitmap(frame);
         frame++;
         frameCounter++;
         if (frameCounter == 3){

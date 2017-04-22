@@ -9,7 +9,7 @@ import android.graphics.Matrix;
  * Created by dam on 5/4/17.
  */
 
-public class DragonBitmapSet {
+public class DragonBitmapSet extends BitmapSet{
     private Bitmap[] bitmaps;
 
     private int[][] sheetInfo = {
@@ -25,22 +25,20 @@ public class DragonBitmapSet {
     public Bitmap getBitmap(int i) { return bitmaps[i]; }
 
     public DragonBitmapSet(Resources res) {
+        super(res);
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inScaled = false;
 
         Bitmap bitmapsBMP = BitmapFactory.decodeResource(res, R.raw.blackdragonpeke, opts);
         Matrix rot1 = new Matrix();
-        Matrix rot2 = new Matrix();
-        rot2.setScale(-1, 1);
         bitmaps = new Bitmap[sheetInfo.length];
         for (int i = 0; i < sheetInfo.length; i++) {
             int x = sheetInfo[i][0];
             int y = sheetInfo[i][1];
             int w = sheetInfo[i][2];
             int h = sheetInfo[i][3];
-            boolean mustRotate = (sheetInfo[i][4] == 1);
             bitmaps[i] = Bitmap.createBitmap(bitmapsBMP, x, y, w, h,
-                    mustRotate?rot2:rot1, true);
+                    rot1, true);
         }
         bitmapsBMP.recycle();
     }

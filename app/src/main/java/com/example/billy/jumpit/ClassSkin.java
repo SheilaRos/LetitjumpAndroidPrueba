@@ -11,7 +11,7 @@ public class ClassSkin {
     private String nombre;
     private int foto;
 
-    public ClassSkin(String nombre, int foton) {
+    public ClassSkin(String nombre, int foto) {
         this.nombre = nombre;
         this.foto = foto;
     }

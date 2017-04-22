@@ -9,7 +9,7 @@ import android.graphics.Matrix;
  * Created by dam on 5/4/17.
  */
 
-public class PokemonBitmapSet {
+public class PokemonBitmapSet extends BitmapSet{
     private Bitmap[] bitmaps;
 
     private int[][] sheetInfo = {
@@ -25,7 +25,9 @@ public class PokemonBitmapSet {
 
     public Bitmap getBitmap(int i) { return bitmaps[i]; }
 
+
     public PokemonBitmapSet(Resources res) {
+        super(res);
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inScaled = false;
 

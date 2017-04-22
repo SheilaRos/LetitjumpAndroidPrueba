@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-public class Bonk {
+public class Bonk extends Character{
 
 	private int frame;
 	private Paint paint;
@@ -46,6 +46,7 @@ public class Bonk {
 	}
 
 	public Bonk(BitmapSet bitmapSet) {
+		super(bitmapSet);
 		this.bitmapSet = bitmapSet;
 		frame = 0;
 		paint = new Paint();

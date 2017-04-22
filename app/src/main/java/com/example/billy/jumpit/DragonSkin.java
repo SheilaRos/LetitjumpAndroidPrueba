@@ -8,12 +8,12 @@ import android.graphics.Paint;
  * Created by dam on 5/4/17.
  */
 
-public class DragonSkin {
+public class DragonSkin extends Character{
     private int frame;
     private Paint paint;
     private int x, y;
     private int jumpVel;
-    private DragonBitmapSet dragonBitmapSet;
+    private BitmapSet dragonBitmapSet;
     private int frameCounter;
     private int counter;
 
@@ -57,7 +57,8 @@ public class DragonSkin {
         this.frameCounter = frameCounter;
     }
 
-    public DragonSkin(DragonBitmapSet dragonBitmapSet) {
+    public DragonSkin(BitmapSet dragonBitmapSet) {
+        super(dragonBitmapSet);
         this.dragonBitmapSet = dragonBitmapSet;
         frame = 0;
         frameCounter = 0;

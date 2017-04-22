@@ -5,9 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class BitmapSet {
 	private Bitmap[] bitmaps;
-	
+	private List<Integer> imgRaw = new ArrayList<>();
+	private int imgId = 0;
 	private int[][] sheetInfo = {
 			{ 0, 66, 24, 32, 0 },	//  0: Bonk walking right 1
 			{ 32, 66, 24, 32, 0 },	//  1: Bonk walking right 2
@@ -64,26 +69,46 @@ public class BitmapSet {
 			{ 107, 212, 28, 32, 0 },	// 50: Bonk dying 4
 			{ 140, 212, 28, 32, 0 },	// 51: Bonk dying 5
 	};
-	
+
+	public List<Integer> getImgRaw() {
+		return imgRaw;
+	}
+
+	public void setImgRaw(List<Integer> imgRaw) {
+		this.imgRaw = imgRaw;
+	}
+
+	void addImgRaw(int img) {
+		imgRaw.add(img);
+	}
+
+	public int getImgId() {
+		return imgId;
+	}
+
+	public void setImgId(int imgId) {
+		this.imgId = imgId;
+	}
+
 	public Bitmap getBitmap(int i) { return bitmaps[i]; }
 	
 	public BitmapSet(Resources res) {
+		imgRaw.add(R.raw.bonk);
+		imgRaw.add(R.raw.blackdragonpeke);
+		imgRaw.add(R.raw.dppokemonsprites);
+
 		BitmapFactory.Options opts = new BitmapFactory.Options();
 		opts.inScaled = false;
 
-		Bitmap bitmapsBMP = BitmapFactory.decodeResource(res, R.raw.bonk, opts);
+		Bitmap bitmapsBMP = BitmapFactory.decodeResource(res, imgRaw.get(imgId), opts);
 		Matrix rot1 = new Matrix();
-		Matrix rot2 = new Matrix();
-		rot2.setScale(-1, 1);
 		bitmaps = new Bitmap[sheetInfo.length];
 		for (int i = 0; i < sheetInfo.length; i++) {
 			int x = sheetInfo[i][0];
 			int y = sheetInfo[i][1];
 			int w = sheetInfo[i][2];
 			int h = sheetInfo[i][3];
-			boolean mustRotate = (sheetInfo[i][4] == 1);
-			bitmaps[i] = Bitmap.createBitmap(bitmapsBMP, x, y, w, h,
-					mustRotate?rot2:rot1, true);
+			bitmaps[i] = Bitmap.createBitmap(bitmapsBMP, x, y, w, h,rot1, true);
 		}
 		bitmapsBMP.recycle();
 	}

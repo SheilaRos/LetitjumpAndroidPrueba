@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.R.drawable.ic_media_pause;
 import static android.R.drawable.ic_media_play;
 
@@ -43,6 +46,10 @@ public class GameView extends View {
     private MainActivity mainActivity;
     private ImageButton goHome;
     private ImageButton reload;
+    private List<BitmapSet> bitmapSetList;
+    private List<Character> characterList;
+    private int characterIndex = 0;
+    private int bitmapIndex = 0;
 
 
     private TextView scoreTextView;
@@ -57,13 +64,19 @@ public class GameView extends View {
 
     public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+// Arraylist de bitmaps
+        bitmapSetList = new ArrayList<>();
+// Declaramos y añadimos bitmaps al array
         bitmapSet = new BitmapSet(this.getResources());
         pokemonBitmapSet = new PokemonBitmapSet(this.getResources());
         dragonBitmapSet = new DragonBitmapSet(this.getResources());
-        endlessScene = new EndlessScene(bitmapSet);
-        bonk = new Bonk(bitmapSet);
-        character = new Character(pokemonBitmapSet);
-        dragonSkin = new DragonSkin(dragonBitmapSet);
+        bitmapSetList.add(bitmapSet);
+        bitmapSetList.add(pokemonBitmapSet);
+        bitmapSetList.add(dragonBitmapSet);
+        endlessScene = new EndlessScene(bitmapSetList.get(bitmapIndex));
+        bonk = new Bonk(bitmapSetList.get(bitmapIndex));
+//        character = new Character(pokemonBitmapSet);
+        dragonSkin = new DragonSkin(bitmapSetList.get(2));
         paint = new Paint();
         paint.setTextSize(10);
         // vel = bonk.getVel();
@@ -205,7 +218,7 @@ public class GameView extends View {
             if (!jump) {
 //                bonk.setY(r << 4);
 //                character.setY((r << 4) + 8);
-                character.setY((r << 4) + 8);
+                dragonSkin.setY((r << 4) + 8);
                 stateJumping = false;
                 jumpCounter = 0;
             }
@@ -228,7 +241,7 @@ public class GameView extends View {
             public void onClick(View v) {
                 endlessScene = new EndlessScene(bitmapSet);
                 bonk = new Bonk(bitmapSet);
-                character = new Character(pokemonBitmapSet);
+//                character = new Character(pokemonBitmapSet);
                 dragonSkin = new DragonSkin(dragonBitmapSet);
                 vel = 4;
                 velCounter = 1;
