@@ -44,8 +44,8 @@
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_weight="0.63"
-        android:visibility="invisible"
+        android:layout_weight="1"
+        android:visibility="visible"
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <LinearLayout

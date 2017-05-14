@@ -4,8 +4,7 @@
     android:id="@+id/vistaSkins"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="1"
-    android:background="@android:color/holo_orange_dark"
+    android:background="@android:color/white"
     android:elevation="8dp"
     android:orientation="vertical">
 
@@ -19,7 +18,10 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:scrollbarStyle="outsideInset"
-            android:scrollbars="horizontal" />
+            android:scrollbars="horizontal" >
+
+        </android.support.v7.widget.RecyclerView>
+
     </RelativeLayout>
 
     <LinearLayout

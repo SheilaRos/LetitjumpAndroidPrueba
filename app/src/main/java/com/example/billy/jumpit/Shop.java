@@ -20,9 +20,9 @@ import android.widget.TextView;
  */
 
 public class Shop extends LinearLayout {
-    private ImageButton skin,powerUp,gemas,exit;
-    private View vistaSkin,vistaPowerUp, vistaShop, vistaGems;
-    private Button btnExitSkin,  btnExitPowerUp, btnExitGems;
+    private ImageButton skin, powerUp, gemas, exit;
+    private View vistaSkin, vistaPowerUp, vistaShop, vistaGems;
+    private Button btnExitSkin, btnExitPowerUp, btnExitGems;
     final Animation fadeout;
 
     public Shop(Context context) {
@@ -45,11 +45,10 @@ public class Shop extends LinearLayout {
         btnExitPowerUp = (Button) view.findViewById(R.id.btnExitPowerUp);
         btnExitGems = (Button) view.findViewById(R.id.btnExitGems);
 
-        vistaSkin = (View)findViewById(R.id.vistaSkins);
-        vistaPowerUp = (View)findViewById(R.id.vistaPowerUp);
-        vistaShop = (View)findViewById(R.id.shopView);
-        vistaGems = (View)findViewById(R.id.vistaGems);
-
+        vistaSkin = (View) findViewById(R.id.view5);
+        vistaPowerUp = (View) findViewById(R.id.vistaPowerUp);
+        vistaShop = (View) findViewById(R.id.shopView);
+        vistaGems = (View) findViewById(R.id.vistaGems);
 
 
         fadeout = AnimationUtils.loadAnimation(context, android.R.anim.fade_out);
@@ -58,10 +57,11 @@ public class Shop extends LinearLayout {
         vistaSkin();
         vistapowerUp();
         vistaGems();
+        btnclose();
     }
 
 
-    public void vistaGems(){
+    public void vistaGems() {
         vistaGems.setVisibility(View.INVISIBLE);
         gemas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +80,7 @@ public class Shop extends LinearLayout {
         });
     }
 
-    public void vistaSkin(){
+    public void vistaSkin() {
         vistaSkin.setVisibility(View.INVISIBLE);
         skin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,17 +90,22 @@ public class Shop extends LinearLayout {
             }
         });
     }
-       /*
-        btnExitSkin.setOnClickListener(new View.OnClickListener() {
+
+    public void btnclose() {
+        exit.setVisibility(View.VISIBLE);
+        exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 vistaSkin.startAnimation(fadeout);
                 vistaSkin.setVisibility(View.INVISIBLE);
-                visibleBtn();
+                vistaGems.startAnimation(fadeout);
+                vistaGems.setVisibility(View.INVISIBLE);
+                vistaPowerUp.startAnimation(fadeout);
+                vistaPowerUp.setVisibility(View.INVISIBLE);
             }
         });
     }
-*/
+
 
     public void vistapowerUp(){
         vistaPowerUp.setVisibility(View.INVISIBLE);
@@ -126,7 +131,8 @@ public class Shop extends LinearLayout {
         skin.setVisibility(View.INVISIBLE);
         powerUp.setVisibility(View.INVISIBLE);
         gemas.setVisibility(View.INVISIBLE);
-        exit.setVisibility(View.INVISIBLE);
+        exit.setVisibility(View.VISIBLE);
+
     }
     public void visibleBtn(){
         skin.setVisibility(View.VISIBLE);

@@ -14,11 +14,12 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
     boolean musicaOn = true;
     private View vistaOpciones;
-    private View vistaTienda;
+    private View vistaTienda, vistaskins;
     private SeekBar volumeControl;
     private ImageButton volume;
     private Bundle bundle;
     private ImageButton reloadEndless, goHome;
+    private ImageButton skin, powerUp, gemas, exit;
 
 
     // barra de control del volumen
@@ -111,6 +112,12 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         reloadEndless = (ImageButton)findViewById(R.id.reloadEndless);
         goHome = (ImageButton)findViewById(R.id.goHome);
 
+        /*---------------------*/
+        vistaskins = findViewById(R.id.view5);
+        skin = (ImageButton) findViewById(R.id.skinBtnShop);
+        powerUp = (ImageButton) findViewById(R.id.powerupBtnShop);
+        gemas = (ImageButton) findViewById(R.id.gemas);
+        /*----------------------*/
         gameView.setMainActivity(this);
         gameView.setPauseButton(pause);
         gameView.setGoHome(goHome);
@@ -178,6 +185,10 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
             public void onClick(View view) {
                 vistaTienda.startAnimation(fadein);
                 vistaTienda.setVisibility(View.VISIBLE);
+                vistaskins.setVisibility(View.INVISIBLE);
+                skin.setVisibility(View.VISIBLE);
+                powerUp.setVisibility(View.VISIBLE);
+                gemas.setVisibility(View.VISIBLE);
             }
         });
 //crear listener para cerrar las opciones

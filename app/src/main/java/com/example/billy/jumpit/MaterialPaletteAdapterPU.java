@@ -1,9 +1,6 @@
 package com.example.billy.jumpit;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,38 +11,40 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPaletteAdapter.PaletteViewHolder> {
-    private List<ClassSkin> data;
+/**
+ * Created by lolrol1 on 14/5/17.
+ */
+
+public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPaletteAdapterPU.PaletteViewHolder> {
+    private List<ClassPowerUp> data;
     RecyclerView list;
     Context context;
-    ArrayList <Integer> imagenes = new ArrayList();
+    ArrayList<Integer> imagenes = new ArrayList();
     Button btnskin;
     int i = 0;
 
-    public MaterialPaletteAdapter(@NonNull List<ClassSkin> data) {
+    public MaterialPaletteAdapterPU(@NonNull List<ClassPowerUp> data) {
         this.data = data;
     }
 
     @Override
-    public PaletteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementskin, parent, false);
+    public MaterialPaletteAdapterPU.PaletteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementpowerup, parent, false);
         return new PaletteViewHolder(row);
     }
 
     @Override
-    public void onBindViewHolder(PaletteViewHolder holder, int position) {
+    public void onBindViewHolder(MaterialPaletteAdapterPU.PaletteViewHolder holder, int position) {
         imagenes.add(R.drawable.audiooff);imagenes.add(R.drawable.audioon);imagenes.add(R.drawable.carro);
         imagenes.add(R.drawable.logros);imagenes.add(R.drawable.opciones);
 
-        ClassSkin color = data.get(position);
-        Log.e("Mostrar mierda: ", color.getNombre());
+        ClassPowerUp color = data.get(position);
         holder.getTitleTextView().setText(color.getNombre());
         holder.getImageskin().setImageResource(imagenes.get(i));
-        holder.getBtnskin();
+        holder.getTextPowerUp().setText(color.getDescripcion());
         i = i+1;
     }
 
@@ -56,13 +55,15 @@ public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPalette
 
     class PaletteViewHolder extends RecyclerView.ViewHolder {
         private TextView titleTextView;
-        private ImageView imageskin;
+        private ImageView imagePowerUp;
+        private TextView textPowerUp;
+
 
         public PaletteViewHolder(View elementskin) {
             super(elementskin);
-            titleTextView = (TextView) itemView.findViewById(R.id.nameskin);
-            imageskin = (ImageView) itemView.findViewById(R.id.photoskin);
-            btnskin = (Button) itemView.findViewById(R.id.buttonskin);
+            titleTextView = (TextView) itemView.findViewById(R.id.namepowerup);
+            imagePowerUp = (ImageView) itemView.findViewById(R.id.photopowerup);
+            textPowerUp = (TextView) itemView.findViewById(R.id.textpowerup);
         }
 
         public TextView getTitleTextView() {
@@ -70,21 +71,14 @@ public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPalette
         }
 
         public ImageView getImageskin() {
-            return imageskin;
+            return imagePowerUp;
         }
 
-        public Button getBtnskin() {
-            return btnskin;
+        public TextView getTextPowerUp() {
+            return textPowerUp;
         }
 
     }
 
-    public void pepe(){
-        btnskin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
-    }
 }

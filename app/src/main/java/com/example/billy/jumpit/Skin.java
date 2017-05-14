@@ -46,6 +46,7 @@ public class Skin extends LinearLayout {
         datas.add(new ClassSkin("bily", R.drawable.audiooff));
         datas.add(new ClassSkin("sheila", R.drawable.audiooff));
 
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleView);
         recyclerView.setAdapter(new MaterialPaletteAdapter(datas));
         //recyclerView.setLayoutManager(new LinearLayoutManager(context));
