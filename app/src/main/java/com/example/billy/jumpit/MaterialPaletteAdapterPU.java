@@ -26,8 +26,7 @@ public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPalet
     Button btnskin;
     int i = 0;
 
-    public MaterialPaletteAdapterPU(@NonNull List<ClassPowerUp> data) {
-        this.data = data;
+    public MaterialPaletteAdapterPU(@NonNull List<ClassPowerUp> data) { this.data = data;
     }
 
     @Override
