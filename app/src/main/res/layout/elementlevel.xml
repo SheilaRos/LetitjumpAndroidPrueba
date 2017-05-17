@@ -7,7 +7,7 @@
     android:weightSum="1">
 
     <ImageButton
-        android:id="@+id/photoLevel"
+        android:id="@+id/photolevel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"

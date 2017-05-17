@@ -25,7 +25,9 @@ public class Skin extends LinearLayout {
     private ImageView imgskin;
     private TextView nameskin;
     private List<ClassSkin> datas;
-    private Button button;
+    private Button button, btnShowSkin;
+    private View vistaShowSkin;
+
 
     public Skin(Context context) {
         this(context, null, 0);
@@ -45,6 +47,8 @@ public class Skin extends LinearLayout {
         datas.add(new ClassSkin("adrian", R.drawable.audiooff));
         datas.add(new ClassSkin("bily", R.drawable.audiooff));
         datas.add(new ClassSkin("sheila", R.drawable.audiooff));
+        //vistaShowSkin = (View) findViewById(R.id.showskin);
+        //vistaShowSkin = (View) findViewById(R.id.showskin);
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleView);
@@ -52,8 +56,22 @@ public class Skin extends LinearLayout {
         //recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
+        //vistaViewSkin();
+
     }
 
+
+
+    /*public void vistaViewSkin(){
+        vistaShowSkin.setVisibility(View.INVISIBLE);
+        btnShowSkin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vistaShowSkin.setVisibility(View.VISIBLE);
+                //invisibleBtn();
+            }
+        });
+    }*/
 
 
 }

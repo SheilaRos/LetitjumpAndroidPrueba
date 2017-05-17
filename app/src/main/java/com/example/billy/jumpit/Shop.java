@@ -107,6 +107,8 @@ public class Shop extends LinearLayout {
     }
 
 
+
+
     public void vistapowerUp(){
         vistaPowerUp.setVisibility(View.INVISIBLE);
         powerUp.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +136,7 @@ public class Shop extends LinearLayout {
         exit.setVisibility(View.VISIBLE);
 
     }
+
     public void visibleBtn(){
         skin.setVisibility(View.VISIBLE);
         powerUp.setVisibility(View.VISIBLE);

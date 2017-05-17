@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/btnhistoria"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:background="@drawable/powerup" />
+
+    <ImageButton
+        android:id="@+id/btnendless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.00"
+        android:background="@drawable/carro"
+        android:layout_below="@+id/btnhistoria" />
+
+    <view
+        android:id="@+id/listamenulevels"
+        class="com.example.billy.jumpit.Levels"
+        id="@+id/view8"
+        layout_width="match_parent"
+        android:layout_width="500dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>

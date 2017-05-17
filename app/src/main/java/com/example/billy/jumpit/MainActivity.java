@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
     boolean musicaOn = true;
     private View vistaOpciones;
-    private View vistaTienda, vistaskins;
+    private View vistaTienda, vistaskins, menuniveles;
     private SeekBar volumeControl;
     private ImageButton volume;
     private Bundle bundle;
@@ -106,11 +106,13 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         vistaOpciones = (View)findViewById(R.id.options);
         volumeControl = (SeekBar)findViewById(R.id.volumeBar);
         vistaTienda = (View)findViewById(R.id.shopView);
+        menuniveles = (View)findViewById(R.id.vistaNiveles);
         final GameView gameView = (GameView)findViewById(R.id.view4);
         final View mainMenuView = (View)findViewById(R.id.view);
         final ImageButton pause = (ImageButton)findViewById(R.id.pause);
         reloadEndless = (ImageButton)findViewById(R.id.reloadEndless);
         goHome = (ImageButton)findViewById(R.id.goHome);
+        final ImageButton endless = (ImageButton) findViewById(R.id.btnendless);
 
         /*---------------------*/
         vistaskins = findViewById(R.id.view5);
@@ -133,6 +135,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 //hacer invisible las views
         vistaOpciones.setVisibility(View.INVISIBLE);
         vistaTienda.setVisibility(View.INVISIBLE);
+        menuniveles.setVisibility(View.INVISIBLE);
 
 //crear listener del play
         play.setOnClickListener(new View.OnClickListener() {
@@ -157,11 +160,20 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 options.setVisibility(View.INVISIBLE);
                 shopButton.startAnimation(fadeout);
                 shopButton.setVisibility(View.INVISIBLE);
+                menuniveles.setVisibility(View.VISIBLE);
+            }
+        });
+
+        endless.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 pause.setVisibility(View.VISIBLE);
                 gameView.setVisibility(View.VISIBLE);
                 mainMenuView.setVisibility(View.INVISIBLE);
+                menuniveles.setVisibility(View.INVISIBLE);
             }
         });
+
 //crear listener del volume para mute o play again
         volume.setOnClickListener(new View.OnClickListener() {
             @Override

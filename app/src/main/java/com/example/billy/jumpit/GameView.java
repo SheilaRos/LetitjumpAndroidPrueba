@@ -103,7 +103,7 @@ public class GameView extends View {
 //            character.draw(canvas);
             dragonSkin.draw(canvas);
             canvas.drawText("SCORE: "+score, 35,20, paint);
-            if (score / 3000 == velCounter) {
+            if (score / 2000 == velCounter) {
                 vel++;
                 velCounter++;
             }
