@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
     boolean musicaOn = true;
     private View vistaOpciones;
-    private View vistaTienda, vistaskins, menuniveles;
+    private View vistaTienda, vistaskins,vistapowerups, menuniveles;
     private SeekBar volumeControl;
     private ImageButton volume;
     private Bundle bundle;
@@ -116,6 +116,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
         /*---------------------*/
         vistaskins = findViewById(R.id.view5);
+        vistapowerups = findViewById(R.id.view6);
         skin = (ImageButton) findViewById(R.id.skinBtnShop);
         powerUp = (ImageButton) findViewById(R.id.powerupBtnShop);
         gemas = (ImageButton) findViewById(R.id.gemas);
@@ -198,9 +199,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 vistaTienda.startAnimation(fadein);
                 vistaTienda.setVisibility(View.VISIBLE);
                 vistaskins.setVisibility(View.INVISIBLE);
+                vistapowerups.setVisibility(View.INVISIBLE);
                 skin.setVisibility(View.VISIBLE);
                 powerUp.setVisibility(View.VISIBLE);
                 gemas.setVisibility(View.VISIBLE);
+
             }
         });
 //crear listener para cerrar las opciones

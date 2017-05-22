@@ -46,7 +46,7 @@ public class Shop extends LinearLayout {
         btnExitGems = (Button) view.findViewById(R.id.btnExitGems);
 
         vistaSkin = (View) findViewById(R.id.view5);
-        vistaPowerUp = (View) findViewById(R.id.vistaPowerUp);
+        vistaPowerUp = (View) findViewById(R.id.view6);
         vistaShop = (View) findViewById(R.id.shopView);
         vistaGems = (View) findViewById(R.id.vistaGems);
 
