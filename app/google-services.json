@@ -1,0 +1,51 @@
+{
+  "project_info": {
+    "project_number": "860648699517",
+    "project_id": "let-it-jump"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860648699517:android:9e4e435f05b31398",
+        "android_client_info": {
+          "package_name": "com.example.billy.jumpit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860648699517-uvfd34emu4gg0ps0ndplfbi2c50vjqjt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.billy.jumpit",
+            "certificate_hash": "143b405d0f615a17bcbdbad8b0d3210c4134e873"
+          }
+        },
+        {
+          "client_id": "860648699517-qfekrqda4q9210mb6jis1b6ni5qb8mgv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvG-JZ0db8PDaAFqKW_QQ2h0N0vAwdyak"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-99876481-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
