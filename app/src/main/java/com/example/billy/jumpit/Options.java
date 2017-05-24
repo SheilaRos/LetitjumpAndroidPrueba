@@ -8,10 +8,6 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-/**
- * Created by dam on 17/1/17.
- */
-
 public class Options extends LinearLayout implements SeekBar.OnSeekBarChangeListener {
     private int value, min, max;
     private SeekBar seekBar;
