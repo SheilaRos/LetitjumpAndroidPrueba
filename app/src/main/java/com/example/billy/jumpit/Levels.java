@@ -8,8 +8,10 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -17,6 +19,11 @@ import java.util.List;
 
 public class Levels extends LinearLayout {
     private List<ClassLevel> datas;
+    private ImageButton image1;
+    private ImageButton image2;
+    private ImageButton image3;
+    private ImageButton image4;
+    private ImageButton image5;
 
     public Levels(Context context) {
         this(context, null, 0);
@@ -32,17 +39,15 @@ public class Levels extends LinearLayout {
         View view = inflater.inflate(R.layout.levels, this);
 
         datas = new ArrayList<>();
-        datas.add(new ClassLevel(R.drawable.audiooff));
-        datas.add(new ClassLevel(R.drawable.audiooff));
-        datas.add(new ClassLevel(R.drawable.audiooff));
-        datas.add(new ClassLevel(R.drawable.audiooff));
-        datas.add(new ClassLevel(R.drawable.audiooff));
+        datas.add(new ClassLevel("nivell1", image1));
+        datas.add(new ClassLevel("nivell2", image2));
+        datas.add(new ClassLevel("nivell3", image3));
+        datas.add(new ClassLevel("nivell4", image4));
+        datas.add(new ClassLevel("nivell5", image5));
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleViewLevel);
         recyclerView.setAdapter(new MaterialPaletteAdapterLevels(datas));
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-
     }
-
 }

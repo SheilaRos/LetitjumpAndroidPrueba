@@ -16,7 +16,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/RecycleViewGEMS1"
             android:layout_width="match_parent"
-            android:layout_height="200px"
+            android:layout_height="410px"
             android:layout_alignParentTop="true"
             android:scrollbarStyle="outsideInset"
             android:scrollbars="horizontal">
@@ -26,7 +26,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/RecycleViewGEMS2"
             android:layout_width="match_parent"
-            android:layout_height="200px"
+            android:layout_height="410px"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/RecycleViewGEMS1"
             android:scrollbarStyle="outsideInset"

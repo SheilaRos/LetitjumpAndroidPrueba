@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:scrollbarStyle="outsideInset"
-            android:scrollbars="horizontal" >
+            android:scrollbars="horizontal">
         </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>

@@ -163,5 +163,12 @@
         android:layout_alignTop="@+id/play"
         android:layout_alignEnd="@+id/optionsButton" />
 
+    <view
+        android:id="@+id/gameviewhistoria"
+        class="com.example.billy.jumpit.GameViewHistoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
 
 </RelativeLayout>
