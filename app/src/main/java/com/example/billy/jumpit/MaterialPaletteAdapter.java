@@ -60,9 +60,16 @@ public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPalette
 
         public PaletteViewHolder(View elementskin) {
             super(elementskin);
-            titleTextView = (TextView) itemView.findViewById(R.id.nameskin);
-            imageskin = (ImageView) itemView.findViewById(R.id.photoskin);
-            btnskin = (Button) itemView.findViewById(R.id.buttonskin);
+            titleTextView = (TextView) elementskin.findViewById(R.id.nameskin);
+            imageskin = (ImageView) elementskin.findViewById(R.id.photoskin);
+            btnskin = (Button) elementskin.findViewById(R.id.buttonskin);
+
+            btnskin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("pep", ".........................................");
+                }
+            });
         }
 
         public TextView getTitleTextView() {
