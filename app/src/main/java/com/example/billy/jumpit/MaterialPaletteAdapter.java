@@ -1,10 +1,12 @@
 package com.example.billy.jumpit;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,8 +28,9 @@ public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPalette
     Button btnskin;
     int i = 0;
 
-    public MaterialPaletteAdapter(@NonNull List<ClassSkin> data) {
+    public MaterialPaletteAdapter(@NonNull List<ClassSkin> data, Context context) {
         this.data = data;
+        this.context = context;
     }
 
     @Override
@@ -60,9 +63,35 @@ public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPalette
 
         public PaletteViewHolder(View elementskin) {
             super(elementskin);
-            titleTextView = (TextView) itemView.findViewById(R.id.nameskin);
-            imageskin = (ImageView) itemView.findViewById(R.id.photoskin);
-            btnskin = (Button) itemView.findViewById(R.id.buttonskin);
+            titleTextView = (TextView) elementskin.findViewById(R.id.nameskin);
+            imageskin = (ImageView) elementskin.findViewById(R.id.photoskin);
+            btnskin = (Button) elementskin.findViewById(R.id.buttonskin);
+
+            btnskin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("pep", ".........................................");
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                    builder.setMessage("Quieres confirmar la compra?")
+                            .setTitle("Compra:");
+                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User clicked OK button
+                        }
+                    });
+                    builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+
+                }
+            });
         }
 
         public TextView getTitleTextView() {

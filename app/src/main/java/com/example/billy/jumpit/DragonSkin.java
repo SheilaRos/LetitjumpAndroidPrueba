@@ -88,6 +88,6 @@ public class DragonSkin extends Character{
             }
         }
 
-        canvas.drawBitmap(sprite, x, y + 8, paint);
+        canvas.drawBitmap(sprite, x, y, paint);
     }
 }

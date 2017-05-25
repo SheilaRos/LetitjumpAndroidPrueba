@@ -5,12 +5,19 @@ package com.example.billy.jumpit;
  */
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Gems extends LinearLayout {
+
+    private List<ClassGems> datas;
 
     public Gems(Context context) {
         this(context, null, 0);
@@ -24,6 +31,23 @@ public class Gems extends LinearLayout {
         super(context, attrs, defStyleAttr);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.gems, this);
+
+        datas = new ArrayList<>();
+        datas.add(new ClassGems(R.drawable.audiooff));
+        datas.add(new ClassGems(R.drawable.audioon));
+        datas.add(new ClassGems( R.drawable.audiooff));
+        datas.add(new ClassGems(R.drawable.audiooff));
+
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleViewGEMS1);
+        recyclerView.setAdapter(new MaterialPaletteAdapterGems(datas));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+        RecyclerView recyclerView2 = (RecyclerView) findViewById(R.id.RecycleViewGEMS2);
+        recyclerView2.setAdapter(new MaterialPaletteAdapterGems(datas));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView2.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     }
 
 }

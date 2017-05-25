@@ -1,13 +1,9 @@
 package com.example.billy.jumpit;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -23,7 +19,7 @@ import static android.R.drawable.ic_media_play;
  * Created by dam on 2/3/17.
  */
 
-public class GameView extends View {
+public class GameViewHistoria extends View {
     private Paint paint;
     private BitmapSet bitmapSet;
     private PokemonBitmapSet pokemonBitmapSet;
@@ -54,15 +50,15 @@ public class GameView extends View {
 
     private TextView scoreTextView;
 
-    public GameView(Context context) {
-        this(context, null, 0);
+    public GameViewHistoria(Context context) {
+        this(context, null, 0, "sheet");
     }
 
-    public GameView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+    public GameViewHistoria(Context context, AttributeSet attrs) {
+        this(context, attrs, 0, "sheet");
     }
 
-    public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public GameViewHistoria(Context context, AttributeSet attrs, int defStyleAttr, String sheet) {
         super(context, attrs, defStyleAttr);
 // Arraylist de bitmaps
         bitmapSetList = new ArrayList<>();

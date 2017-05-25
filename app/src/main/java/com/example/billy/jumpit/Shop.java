@@ -43,12 +43,12 @@ public class Shop extends LinearLayout {
         exit = (ImageButton) view.findViewById(R.id.exitBtn);
         //btnExitSkin = (Button) view.findViewById(R.id.btnExitSkins);
         btnExitPowerUp = (Button) view.findViewById(R.id.btnExitPowerUp);
-        btnExitGems = (Button) view.findViewById(R.id.btnExitGems);
+        btnExitGems = (Button) view.findViewById(R.id.btnExitPowerUp);
 
         vistaSkin = (View) findViewById(R.id.view5);
-        vistaPowerUp = (View) findViewById(R.id.vistaPowerUp);
+        vistaPowerUp = (View) findViewById(R.id.view6);
         vistaShop = (View) findViewById(R.id.shopView);
-        vistaGems = (View) findViewById(R.id.vistaGems);
+        vistaGems = (View) findViewById(R.id.view7);
 
 
         fadeout = AnimationUtils.loadAnimation(context, android.R.anim.fade_out);
@@ -107,6 +107,8 @@ public class Shop extends LinearLayout {
     }
 
 
+
+
     public void vistapowerUp(){
         vistaPowerUp.setVisibility(View.INVISIBLE);
         powerUp.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +136,7 @@ public class Shop extends LinearLayout {
         exit.setVisibility(View.VISIBLE);
 
     }
+
     public void visibleBtn(){
         skin.setVisibility(View.VISIBLE);
         powerUp.setVisibility(View.VISIBLE);

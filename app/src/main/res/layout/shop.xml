@@ -13,30 +13,36 @@
         class="com.example.billy.jumpit.PowerUp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:alpha="1"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:layout_alignBottom="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout" />
 
     <view
         android:id="@+id/view5"
         class="com.example.billy.jumpit.Skin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:alpha="1"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_alignStart="@+id/view6"
+        android:layout_alignTop="@+id/view6"
+        android:layout_alignEnd="@+id/view6"
+        android:layout_alignBottom="@+id/view6" />
 
     <view
         android:id="@+id/view7"
         class="com.example.billy.jumpit.Gems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:alpha="1"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/view6"
+        android:layout_alignEnd="@+id/view6"
+        android:layout_alignBottom="@+id/view6"
+        android:layout_alignStart="@+id/view6" />
 
     <ImageButton
         android:id="@+id/exitBtn"
@@ -60,7 +66,8 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="15dp"
         android:layout_toStartOf="@+id/exitBtn"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout">
 
         <ImageButton
             android:id="@+id/skinBtnShop"

@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vistaGems"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="1"
-    android:background="@mipmap/ic_launcher"
+    android:background="@android:color/white"
     android:elevation="8dp"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnExitGems"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/RecycleViewGEMS1"
+            android:layout_width="match_parent"
+            android:layout_height="410px"
+            android:layout_alignParentTop="true"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="horizontal">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/RecycleViewGEMS2"
+            android:layout_width="match_parent"
+            android:layout_height="410px"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/RecycleViewGEMS1"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="horizontal">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
