@@ -1,7 +1,9 @@
 package com.example.billy.jumpit;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +28,9 @@ public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPalet
     Button btnskin;
     int i = 0;
 
-    public MaterialPaletteAdapterPU(@NonNull List<ClassPowerUp> data) { this.data = data;
+    public MaterialPaletteAdapterPU(@NonNull List<ClassPowerUp> data, Context context) {
+        this.data = data;
+        this.context = context;
     }
 
     @Override
@@ -44,6 +48,7 @@ public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPalet
         holder.getTitleTextView().setText(color.getNombre());
         holder.getImageskin().setImageResource(imagenes.get(i));
         holder.getTextPowerUp().setText(color.getDescripcion());
+        holder.getBtnpowerup();
         i = i+1;
     }
 
@@ -56,13 +61,41 @@ public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPalet
         private TextView titleTextView;
         private ImageView imagePowerUp;
         private TextView textPowerUp;
+        private Button btnpowerup;
 
 
         public PaletteViewHolder(View elementskin) {
             super(elementskin);
-            titleTextView = (TextView) itemView.findViewById(R.id.namepowerup);
-            imagePowerUp = (ImageView) itemView.findViewById(R.id.photopowerup);
-            textPowerUp = (TextView) itemView.findViewById(R.id.textpowerup);
+            titleTextView = (TextView) elementskin.findViewById(R.id.namepowerup);
+            imagePowerUp = (ImageView) elementskin.findViewById(R.id.photopowerup);
+            textPowerUp = (TextView) elementskin.findViewById(R.id.textpowerup);
+            btnpowerup = (Button) elementskin.findViewById(R.id.buttonpowerup);
+
+            btnpowerup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("pep", ".........................................");
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                    builder.setMessage("Quieres confirmar la compra?")
+                            .setTitle("Compra:");
+                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User clicked OK button
+                        }
+                    });
+                    builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+
+                }
+            });
         }
 
         public TextView getTitleTextView() {
@@ -75,6 +108,10 @@ public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPalet
 
         public TextView getTextPowerUp() {
             return textPowerUp;
+        }
+
+        public Button getBtnpowerup() {
+            return btnpowerup;
         }
 
     }

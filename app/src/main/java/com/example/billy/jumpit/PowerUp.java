@@ -40,9 +40,10 @@ public class PowerUp extends LinearLayout {
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleViewPU);
-        recyclerView.setAdapter(new MaterialPaletteAdapterPU(datas));
+        recyclerView.setAdapter(new MaterialPaletteAdapterPU(datas, context));
         //recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setHorizontalScrollBarEnabled(false);
 
     }
 

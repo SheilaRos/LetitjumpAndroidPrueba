@@ -16,16 +16,16 @@
     <ImageView
         android:id="@+id/photoskin"
         android:layout_width="111dp"
-        android:layout_height="107dp"
+        android:layout_height="100dp"
         android:visibility="visible"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <Button
         android:id="@+id/buttonskin"
-        android:layout_width="wrap_content"
-        android:layout_height="40px"
+        android:layout_width="111dp"
+        android:layout_height="35dp"
         android:layout_gravity="center"
-        android:text="Button"
+        android:background="@drawable/botoncomprar"
         android:textAlignment="center" />
 
 </LinearLayout>
