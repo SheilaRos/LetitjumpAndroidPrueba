@@ -55,6 +55,7 @@ public class Skin extends LinearLayout {
         recyclerView.setAdapter(new MaterialPaletteAdapter(datas, context));
         //recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setHorizontalScrollBarEnabled(false);
 
         //vistaViewSkin();
 
