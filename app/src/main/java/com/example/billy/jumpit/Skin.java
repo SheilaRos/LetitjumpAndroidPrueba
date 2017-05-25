@@ -52,7 +52,7 @@ public class Skin extends LinearLayout {
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleView);
-        recyclerView.setAdapter(new MaterialPaletteAdapter(datas));
+        recyclerView.setAdapter(new MaterialPaletteAdapter(datas, context));
         //recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
