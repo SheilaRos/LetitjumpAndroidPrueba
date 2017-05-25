@@ -40,14 +40,15 @@ public class Gems extends LinearLayout {
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleViewGEMS1);
-        recyclerView.setAdapter(new MaterialPaletteAdapterGems(datas));
+        recyclerView.setAdapter(new MaterialPaletteAdapterGems(datas, context));
         //recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-
+        recyclerView.setHorizontalScrollBarEnabled(false);
         RecyclerView recyclerView2 = (RecyclerView) findViewById(R.id.RecycleViewGEMS2);
-        recyclerView2.setAdapter(new MaterialPaletteAdapterGems(datas));
+        recyclerView2.setAdapter(new MaterialPaletteAdapterGems(datas, context));
         //recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView2.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView2.setHorizontalScrollBarEnabled(false);
     }
 
 }

@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,13 @@ public class Levels extends LinearLayout {
     private ImageButton image3;
     private ImageButton image4;
     private ImageButton image5;
+
+    private TextView text1;
+    private TextView text2;
+    private TextView text3;
+    private TextView text4;
+    private TextView text5;
+
 
     public Levels(Context context) {
         this(context, null, 0);
@@ -38,12 +46,13 @@ public class Levels extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.levels, this);
 
+
         datas = new ArrayList<>();
-        datas.add(new ClassLevel("nivell1", image1));
-        datas.add(new ClassLevel("nivell2", image2));
-        datas.add(new ClassLevel("nivell3", image3));
-        datas.add(new ClassLevel("nivell4", image4));
-        datas.add(new ClassLevel("nivell5", image5));
+        datas.add(new ClassLevel("nivell1", image1, text1));
+        datas.add(new ClassLevel("nivell2", image2, text2));
+        datas.add(new ClassLevel("nivell3", image3, text3));
+        datas.add(new ClassLevel("nivell4", image4, text4));
+        datas.add(new ClassLevel("nivell5", image5, text5));
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecycleViewLevel);

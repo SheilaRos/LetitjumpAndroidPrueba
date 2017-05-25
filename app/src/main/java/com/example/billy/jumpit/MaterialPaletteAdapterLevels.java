@@ -20,7 +20,6 @@ public class MaterialPaletteAdapterLevels extends RecyclerView.Adapter<MaterialP
     RecyclerView list;
     private Player player = new Player();
     Context context;
-    ImageButton imageLevel;
     ArrayList <Integer> imagenes = new ArrayList();
     int i = 0;
 
@@ -31,19 +30,18 @@ public class MaterialPaletteAdapterLevels extends RecyclerView.Adapter<MaterialP
     @Override
     public PaletteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementlevel, parent, false);
-
         return new PaletteViewHolder(row);
     }
 
     @Override
     public void onBindViewHolder(PaletteViewHolder holder, int position) {
+
         imagenes.add(R.drawable.audiooff);imagenes.add(R.drawable.audioon);imagenes.add(R.drawable.carro);
         imagenes.add(R.drawable.logros);imagenes.add(R.drawable.opciones);
         ClassLevel objecte = data.get(position);
-        holder.getImageLevel().setBackgroundResource(imagenes.get(position));
+        holder.text.setText("nivell"+position);
+        holder.getImageLevel();
         i = i+1;
-
-
     }
 
     @Override
@@ -52,18 +50,27 @@ public class MaterialPaletteAdapterLevels extends RecyclerView.Adapter<MaterialP
     }
 
     class PaletteViewHolder extends RecyclerView.ViewHolder {
-        private TextView titleTextView;
-        private ImageButton imageLevel;
+        ImageButton imageLevel;
+        TextView text;
 
         public PaletteViewHolder(View elementskin) {
             super(elementskin);
-            imageLevel = (ImageButton) itemView.findViewById(R.id.photolevel);
-        }
+            imageLevel = (ImageButton) elementskin.findViewById(R.id.photolevel);
+            text = (TextView) elementskin.findViewById(R.id.textlevelid);
 
-        public TextView getTitleTextView() {
-            return titleTextView;
+            imageLevel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("nivell:---->", text.getText().toString());
+                }
+            });
+
         }
 
         public ImageButton getImageLevel() { return imageLevel; }
+        public TextView getText() {
+            return text;
+        }
+
     }
 }
