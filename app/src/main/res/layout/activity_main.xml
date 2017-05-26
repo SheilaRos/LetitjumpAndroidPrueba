@@ -5,26 +5,26 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.billy.jumpit.MainActivity"
+    tools:context="com.example.billy.jumpit.controller.activities.main.MainActivity"
     android:background="@android:color/holo_green_light">
 
     <view
         android:id="@+id/viewGameHistoria"
-        class="com.example.billy.jumpit.GameViewHistoria"
+        class="com.example.billy.jumpit.controller.activities.gameViews.GameViewHistoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible" />
 
     <view
         android:id="@+id/view4"
-        class="com.example.billy.jumpit.GameView"
+        class="com.example.billy.jumpit.controller.activities.gameViews.GameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible" />
 
     <view
         android:id="@+id/view"
-        class="com.example.billy.jumpit.MainMenuView"
+        class="com.example.billy.jumpit.controller.activities.main.MainMenuView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -124,7 +124,7 @@
 
     <view
         android:id="@+id/view3"
-        class="com.example.billy.jumpit.Shop"
+        class="com.example.billy.jumpit.controller.activities.gameViews.Shop"
         android:layout_width="500dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
@@ -134,7 +134,7 @@
 
     <view
         android:id="@+id/view2"
-        class="com.example.billy.jumpit.Options"
+        class="com.example.billy.jumpit.controller.activities.gameViews.Options"
         android:layout_width="500dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
@@ -144,7 +144,7 @@
 
     <view
         android:id="@+id/vistaNiveles"
-        class="com.example.billy.jumpit.VistaNiveles"
+        class="com.example.billy.jumpit.controller.activities.gameViews.VistaNiveles"
         android:layout_width="500dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
@@ -182,7 +182,7 @@
 
     <view
         android:id="@+id/gameviewhistoria"
-        class="com.example.billy.jumpit.GameViewHistoria"
+        class="com.example.billy.jumpit.controller.activities.gameViews.GameViewHistoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible" />

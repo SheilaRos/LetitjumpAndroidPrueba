@@ -10,7 +10,7 @@
 
     <view
         android:id="@+id/view6"
-        class="com.example.billy.jumpit.PowerUp"
+        class="com.example.billy.jumpit.controller.activities.gameViews.PowerUp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="1"
@@ -22,7 +22,7 @@
 
     <view
         android:id="@+id/view5"
-        class="com.example.billy.jumpit.Skin"
+        class="com.example.billy.jumpit.controller.activities.gameViews.Skin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="1"
@@ -34,7 +34,7 @@
 
     <view
         android:id="@+id/view7"
-        class="com.example.billy.jumpit.Gems"
+        class="com.example.billy.jumpit.controller.activities.gameViews.Gems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="1"

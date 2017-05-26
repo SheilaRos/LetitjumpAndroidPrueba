@@ -21,7 +21,7 @@
 
     <view
         android:id="@+id/listamenulevels"
-        class="com.example.billy.jumpit.Levels"
+        class="com.example.billy.jumpit.controller.activities.gameViews.Levels"
         id="@+id/view8"
         layout_width="match_parent"
         android:layout_width="500dp"
