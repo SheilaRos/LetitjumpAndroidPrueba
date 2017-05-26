@@ -107,7 +107,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         volumeControl = (SeekBar)findViewById(R.id.volumeBar);
         vistaTienda = (View)findViewById(R.id.shopView);
         menuniveles = (View)findViewById(R.id.vistaNiveles);
-        final GameView gameView = (GameView)findViewById(R.id.view4);
+        final GameView gameView = (GameView) findViewById(R.id.view4);
         final View mainMenuView = (View)findViewById(R.id.view);
         final ImageButton pause = (ImageButton)findViewById(R.id.pause);
         reloadEndless = (ImageButton)findViewById(R.id.reloadEndless);

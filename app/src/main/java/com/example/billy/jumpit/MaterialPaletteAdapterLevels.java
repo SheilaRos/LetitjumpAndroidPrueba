@@ -61,6 +61,7 @@ public class MaterialPaletteAdapterLevels extends RecyclerView.Adapter<MaterialP
             imageLevel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Log.d("nivell:---->", text.getText().toString());
                 }
             });

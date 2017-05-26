@@ -24,7 +24,7 @@ public class GameViewHistoria extends View {
     private BitmapSet bitmapSet;
     private PokemonBitmapSet pokemonBitmapSet;
     private DragonBitmapSet dragonBitmapSet;
-    private EndlessScene endlessScene;
+    private Scene scene;
     private Bonk bonk;
     private DragonSkin dragonSkin;
     private Character character;
@@ -64,13 +64,14 @@ public class GameViewHistoria extends View {
         bitmapSetList = new ArrayList<>();
 // Declaramos y añadimos bitmaps al array
         bitmapSet = new BitmapSet(this.getResources());
+        scene = new Scene(this);
         pokemonBitmapSet = new PokemonBitmapSet(this.getResources());
         dragonBitmapSet = new DragonBitmapSet(this.getResources());
         bitmapSetList.add(bitmapSet);
         bitmapSetList.add(pokemonBitmapSet);
         bitmapSetList.add(dragonBitmapSet);
-        endlessScene = new EndlessScene(bitmapSetList.get(bitmapIndex));
         bonk = new Bonk(bitmapSetList.get(bitmapIndex));
+        scene.loadFromFile(R.raw.nivel1);
 //        character = new Character(pokemonBitmapSet);
         dragonSkin = new DragonSkin(bitmapSetList.get(2));
         paint = new Paint();
@@ -94,7 +95,7 @@ public class GameViewHistoria extends View {
             } else if (!checkGround()) {
                 doGoingDown();
             }
-            endlessScene.draw(canvas, vel);
+            scene.draw(canvas);
 //            bonk.draw(canvas);
 //            character.draw(canvas);
             dragonSkin.draw(canvas);
@@ -108,7 +109,7 @@ public class GameViewHistoria extends View {
             if (bitmapSet == null) return;
             float sc = getHeight() / (16 * 16f);
             canvas.scale(sc, sc);
-            endlessScene.draw(canvas, vel);
+            scene.draw(canvas);
 //            bonk.draw(canvas);
 //            character.draw(canvas);
             dragonSkin.draw(canvas);
@@ -207,7 +208,7 @@ public class GameViewHistoria extends View {
 //        int c = bonk.getX() >> 4;
 //        int c = character.getX() >> 4;
         int c = dragonSkin.getX() >> 4;
-        if (!endlessScene.isGround(r+2, c)){
+        if (!scene.isGround(r+2, c)){
             stateJumping = true;
             return false;
         }else {
@@ -235,7 +236,7 @@ public class GameViewHistoria extends View {
         reload.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                endlessScene = new EndlessScene(bitmapSet);
+                scene = new Scene(bitmapSet);
                 bonk = new Bonk(bitmapSet);
 //                character = new Character(pokemonBitmapSet);
                 dragonSkin = new DragonSkin(dragonBitmapSet);
@@ -292,5 +293,13 @@ public class GameViewHistoria extends View {
 
     public void setReload(ImageButton reload) {
         this.reload = reload;
+    }
+
+    public BitmapSet getBitmapSet() {
+        return bitmapSet;
+    }
+
+    public void setBitmapSet(BitmapSet bitmapSet) {
+        this.bitmapSet = bitmapSet;
     }
 }
