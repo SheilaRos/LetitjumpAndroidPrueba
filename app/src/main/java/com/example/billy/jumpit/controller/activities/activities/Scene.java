@@ -1,10 +1,10 @@
-package com.example.billy.jumpit.controller.activities.Scenes;
+package com.example.billy.jumpit.controller.activities.activities;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.widget.Toast;
 
-import com.example.billy.jumpit.controller.activities.gameViews.GameViewHistoria;
+import com.example.billy.jumpit.controller.activities.activities.gameViews.GameViewHistoria;
 import com.example.billy.jumpit.model.BitmapSet;
 
 import java.io.BufferedReader;

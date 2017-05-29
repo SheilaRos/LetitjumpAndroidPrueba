@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.gameViews;
+package com.example.billy.jumpit.controller.activities.activities.gameViews;
 
 /**
  * Created by DAM on 20/3/17.
@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.billy.jumpit.R;
-import com.example.billy.jumpit.controller.activities.gameViews.MaterialPaletteAdapterLevels;
 import com.example.billy.jumpit.model.ClassLevel;
 
 import java.util.ArrayList;

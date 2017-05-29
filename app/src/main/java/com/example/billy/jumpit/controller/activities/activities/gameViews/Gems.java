@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.gameViews;
+package com.example.billy.jumpit.controller.activities.activities.gameViews;
 
 /**
  * Created by DAM on 20/3/17.
@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.billy.jumpit.R;
-import com.example.billy.jumpit.controller.activities.gameViews.MaterialPaletteAdapterGems;
 import com.example.billy.jumpit.model.ClassGems;
 
 import java.util.ArrayList;

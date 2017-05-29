@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.Scenes;
+package com.example.billy.jumpit.controller.activities.activities;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

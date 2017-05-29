@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.gameViews;
+package com.example.billy.jumpit.controller.activities.activities.gameViews;
 
 import android.content.Context;
 import android.content.DialogInterface;

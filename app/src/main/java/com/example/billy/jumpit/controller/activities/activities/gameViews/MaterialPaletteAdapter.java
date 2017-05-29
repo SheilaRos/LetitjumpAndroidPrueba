@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.gameViews;
+package com.example.billy.jumpit.controller.activities.activities.gameViews;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,44 +14,40 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.billy.jumpit.R;
-import com.example.billy.jumpit.model.ClassPowerUp;
+import com.example.billy.jumpit.model.ClassSkin;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by lolrol1 on 14/5/17.
- */
-
-public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPaletteAdapterPU.PaletteViewHolder> {
-    private List<ClassPowerUp> data;
+public class MaterialPaletteAdapter extends RecyclerView.Adapter<MaterialPaletteAdapter.PaletteViewHolder> {
+    private List<ClassSkin> data;
     RecyclerView list;
     Context context;
-    ArrayList<Integer> imagenes = new ArrayList();
+    ArrayList <Integer> imagenes = new ArrayList();
     Button btnskin;
     int i = 0;
 
-    public MaterialPaletteAdapterPU(@NonNull List<ClassPowerUp> data, Context context) {
+    public MaterialPaletteAdapter(@NonNull List<ClassSkin> data, Context context) {
         this.data = data;
         this.context = context;
     }
 
     @Override
-    public MaterialPaletteAdapterPU.PaletteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementpowerup, parent, false);
+    public PaletteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.elementskin, parent, false);
         return new PaletteViewHolder(row);
     }
 
     @Override
-    public void onBindViewHolder(MaterialPaletteAdapterPU.PaletteViewHolder holder, int position) {
+    public void onBindViewHolder(PaletteViewHolder holder, int position) {
         imagenes.add(R.drawable.audiooff);imagenes.add(R.drawable.audioon);imagenes.add(R.drawable.carro);
         imagenes.add(R.drawable.logros);imagenes.add(R.drawable.opciones);
 
-        ClassPowerUp color = data.get(position);
+        ClassSkin color = data.get(position);
+        Log.e("Mostrar mierda: ", color.getNombre());
         holder.getTitleTextView().setText(color.getNombre());
         holder.getImageskin().setImageResource(imagenes.get(i));
-        holder.getTextPowerUp().setText(color.getDescripcion());
-        holder.getBtnpowerup();
+        holder.getBtnskin();
         i = i+1;
     }
 
@@ -62,19 +58,15 @@ public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPalet
 
     class PaletteViewHolder extends RecyclerView.ViewHolder {
         private TextView titleTextView;
-        private ImageView imagePowerUp;
-        private TextView textPowerUp;
-        private Button btnpowerup;
-
+        private ImageView imageskin;
 
         public PaletteViewHolder(View elementskin) {
             super(elementskin);
-            titleTextView = (TextView) elementskin.findViewById(R.id.namepowerup);
-            imagePowerUp = (ImageView) elementskin.findViewById(R.id.photopowerup);
-            textPowerUp = (TextView) elementskin.findViewById(R.id.textpowerup);
-            btnpowerup = (Button) elementskin.findViewById(R.id.buttonpowerup);
+            titleTextView = (TextView) elementskin.findViewById(R.id.nameskin);
+            imageskin = (ImageView) elementskin.findViewById(R.id.photoskin);
+            btnskin = (Button) elementskin.findViewById(R.id.buttonskin);
 
-            btnpowerup.setOnClickListener(new View.OnClickListener() {
+            btnskin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.d("pep", ".........................................");
@@ -106,18 +98,21 @@ public class MaterialPaletteAdapterPU extends RecyclerView.Adapter<MaterialPalet
         }
 
         public ImageView getImageskin() {
-            return imagePowerUp;
+            return imageskin;
         }
 
-        public TextView getTextPowerUp() {
-            return textPowerUp;
-        }
-
-        public Button getBtnpowerup() {
-            return btnpowerup;
+        public Button getBtnskin() {
+            return btnskin;
         }
 
     }
 
+    public void pepe(){
+        btnskin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+    }
 }

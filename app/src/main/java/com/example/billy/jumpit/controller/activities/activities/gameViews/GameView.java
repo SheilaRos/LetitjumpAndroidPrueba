@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.gameViews;
+package com.example.billy.jumpit.controller.activities.activities.gameViews;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.billy.jumpit.controller.activities.Scenes.EndlessScene;
-import com.example.billy.jumpit.controller.activities.main.MainActivity;
+import com.example.billy.jumpit.controller.activities.activities.EndlessScene;
+import com.example.billy.jumpit.controller.activities.activities.main.MainActivity;
 import com.example.billy.jumpit.model.BitmapSet;
 import com.example.billy.jumpit.model.Bonk;
 import com.example.billy.jumpit.model.Character;

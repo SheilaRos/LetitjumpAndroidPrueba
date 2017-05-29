@@ -1,13 +1,8 @@
-package com.example.billy.jumpit.controller.activities.gameViews;
+package com.example.billy.jumpit.controller.activities.activities.gameViews;
 
 import android.app.Activity;
-import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
-import android.util.AttributeSet;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 
 import com.example.billy.jumpit.R;
 

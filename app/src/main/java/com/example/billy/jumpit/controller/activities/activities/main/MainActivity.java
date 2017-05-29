@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.main;
+package com.example.billy.jumpit.controller.activities.activities.main;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.billy.jumpit.controller.activities.gameViews.Audio;
-import com.example.billy.jumpit.controller.activities.gameViews.GameView;
+import com.example.billy.jumpit.controller.activities.activities.gameViews.Audio;
+import com.example.billy.jumpit.controller.activities.activities.gameViews.GameView;
 import com.example.billy.jumpit.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

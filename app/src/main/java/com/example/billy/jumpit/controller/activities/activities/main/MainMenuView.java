@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.main;
+package com.example.billy.jumpit.controller.activities.activities.main;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.billy.jumpit.controller.activities.Scenes.MainMenuBackgroundScene;
+import com.example.billy.jumpit.controller.activities.activities.MainMenuBackgroundScene;
 import com.example.billy.jumpit.model.BitmapSet;
 import com.example.billy.jumpit.model.Bonk;
 

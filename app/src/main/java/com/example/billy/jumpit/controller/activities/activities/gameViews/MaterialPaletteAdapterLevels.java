@@ -1,4 +1,4 @@
-package com.example.billy.jumpit.controller.activities.gameViews;
+package com.example.billy.jumpit.controller.activities.activities.gameViews;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.billy.jumpit.R;
 import com.example.billy.jumpit.model.ClassLevel;
-import com.example.billy.jumpit.model.Player;
+import com.example.billy.jumpit.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 public class MaterialPaletteAdapterLevels extends RecyclerView.Adapter<MaterialPaletteAdapterLevels.PaletteViewHolder> {
     private List<ClassLevel> data;
     RecyclerView list;
-    private Player player = new Player();
+    private User user = new User();
     Context context;
     ArrayList <Integer> imagenes = new ArrayList();
     int i = 0;
